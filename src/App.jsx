@@ -1,11 +1,8 @@
 import "./App.css";
+import HealthEventForm from "./HealthEventForm";
 
 function App() {
-  return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
-  );
+  return <HealthEventForm />;
 }
 
 export default App;
