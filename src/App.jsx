@@ -1,11 +1,12 @@
 import "./App.css";
+import CreatePetLayout from "./layouts/CreatePetLayout";
+import HealthEventForm from "./layouts/HealthEventForm";
+import PetInfoLayout from "./layouts/PetInfoLayout";
+import WeightLayout from "./layouts/WeightLayout";
 
 function App() {
-  return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
-  );
+  // return <HealthEventForm />;
+  return <WeightLayout />;
 }
 
 export default App;

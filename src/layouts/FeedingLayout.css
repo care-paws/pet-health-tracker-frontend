@@ -1,0 +1,190 @@
+.feeding-layout {
+  width: 412px;
+  min-height: 917px;
+  background: linear-gradient(180deg, #C48CB6CC 0%, #C48CB6 100px, #FFDCB4 100px);
+  overflow: auto;
+}
+
+.feeding-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 198px;
+  padding: 30px 0;
+  width: 100%;
+}
+
+.feeding-logo {
+  width: 110px;
+  height: 70px;
+}
+
+.feeding-menu-button {
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.feeding-title-section {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 40px 50px;
+  background: #FFDCB4;
+}
+
+.feeding-title {
+  font-family: Roboto, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #C48CB6;
+}
+
+.feeding-content {
+  padding: 30px;
+  background: #FFDCB4;
+}
+
+.feeding-description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.feeding-description p {
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  max-width: 200px;
+}
+
+.feeding-add-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 106px;
+  height: 52px;
+  background: #C48CB6;
+  border: none;
+  border-radius: 10px;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #FDF9F9;
+  cursor: pointer;
+}
+
+.feeding-add-button span:first-child {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.feeding-schedule-card {
+  width: 304px;
+  padding: 20px;
+  margin-bottom: 30px;
+  background: #fff;
+  border: 2px solid rgba(197, 112, 208, 0.8);
+  border-radius: 10px;
+}
+
+.feeding-schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.feeding-schedule-label {
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+}
+
+.feeding-schedule-status {
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(197, 112, 208, 0.8);
+}
+
+.feeding-schedule-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: #fff;
+  border: 2px solid rgba(197, 112, 208, 0.8);
+  border-radius: 5px;
+}
+
+.feeding-schedule-info {
+  flex: 1;
+}
+
+.feeding-time {
+  font-family: Roboto, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+}
+
+.feeding-time.strikethrough {
+  text-decoration: line-through;
+}
+
+.feeding-amount {
+  font-family: Roboto, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #000;
+  margin: 5px 0;
+}
+
+.feeding-food {
+  font-family: Roboto, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #000;
+  margin: 0;
+  line-height: 20px;
+}
+
+.feeding-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 34px;
+  padding: 20px 0;
+  background: #C48CB6;
+  position: fixed;
+  bottom: 0;
+  width: 412px;
+}
+
+.feeding-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.feeding-nav-item span {
+  font-family: Roboto, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #FFEBCC;
+}
+
+.feeding-nav-item svg {
+  width: 40px;
+  height: 40px;
+}
