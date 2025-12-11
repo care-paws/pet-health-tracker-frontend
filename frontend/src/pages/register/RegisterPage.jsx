@@ -1,7 +1,7 @@
+import logoUrl from "@/assets/logo.svg";
+import { register } from "@/services/authService";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logoUrl from "../../assets/logo.svg";
-import { register } from "../../services/authService";
 import styles from "./RegisterPage.module.css";
 
 function RegisterPage() {

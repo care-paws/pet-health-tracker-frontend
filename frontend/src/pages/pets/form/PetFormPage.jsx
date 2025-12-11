@@ -1,8 +1,8 @@
+import { dogIllustration, pawPattern, petBird, petCat, petDog, petHamster, petRabbit, petTurtle } from "@/assets/images/images";
+import logoUrl from "@/assets/logo.svg";
+import { calculateAge, createPet, mapPetTypeToSpecies } from "@/services/petService";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { dogIllustration, pawPattern, petBird, petCat, petDog, petHamster, petRabbit, petTurtle } from "../../../assets/images/images";
-import logoUrl from "../../assets/logo.svg";
-import { calculateAge, createPet, mapPetTypeToSpecies } from "../../../services/petService";
 import styles from "./PetFormPage.module.css";
 
 function PetFormPage() {
