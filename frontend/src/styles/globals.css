@@ -1,0 +1,56 @@
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, -apple-system, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: #f0f0f0;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+/* CSS Variables */
+:root {
+  --color-primary: #ffdcb4;
+  --color-secondary: #c48cb6;
+  --color-accent: #ffebcc;
+  --color-border: rgba(196, 140, 182, 0.81);
+  --color-border-alt: rgba(197, 112, 208, 0.8);
+  --color-text: #000000;
+  --color-white: #ffffff;
+  
+  --font-roboto: "Roboto", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+/* Scrollbar Styling */
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(196, 140, 182, 0.1);
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(196, 140, 182, 0.5);
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(196, 140, 182, 0.7);
+}
+
