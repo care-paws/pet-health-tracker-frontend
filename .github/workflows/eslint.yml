@@ -27,6 +27,8 @@ jobs:
 
       - name: Install dependencies (locked)
         run: bun install --frozen-lockfile
+        working-directory: frontend
 
       - name: Run ESLint
         run: bunx eslint .
+        working-directory: frontend
