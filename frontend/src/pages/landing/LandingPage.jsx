@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logoUrl from "../assets/logo.svg";
+import logoUrl from "../../assets/logo.svg";
 import styles from "./LandingPage.module.css";
 
 function LandingPage() {
@@ -101,7 +101,7 @@ function LandingPage() {
         {/* Step 2 Icon */}
         <div className={`${styles["step-icon"]} ${styles["step-icon--medium"]}`}>
           <svg width="91" height="86" viewBox="0 0 91 86" fill="none">
-            <circle cx="45.5" cy="43" r="35" fill="#C48CB6" opacity="0.2" />
+            <circle cx="45.5" cy="43" r="35" fill="#FFFFFF" opacity="0.2" />
             <path d="M45.5 25C35 25 28 35 28 45C28 55 35 62 45.5 62C56 62 63 55 63 45C63 35 56 25 45.5 25Z" fill="#C48CB6" />
             <circle cx="40" cy="42" r="3" fill="#FFF" />
             <circle cx="51" cy="42" r="3" fill="#FFF" />

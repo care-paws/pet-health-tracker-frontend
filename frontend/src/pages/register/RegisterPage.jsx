@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logoUrl from "../assets/logo.svg";
-import { register } from "../services/authService";
+import logoUrl from "../../assets/logo.svg";
+import { register } from "../../services/authService";
 import styles from "./RegisterPage.module.css";
 
 function RegisterPage() {
@@ -12,7 +12,7 @@ function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setError("");
     setLoading(true);
@@ -66,13 +66,7 @@ function RegisterPage() {
           {/* User Type Field */}
           <div className={styles["register-form__field"]}>
             <div className={styles["register-form__select-wrapper"]}>
-              <select
-                id="userType"
-                className={styles["register-form__select"]}
-                value={userType}
-                onChange={(e) => setUserType(e.target.value)}
-                required
-              >
+              <select id="userType" className={styles["register-form__select"]} value={userType} onChange={e => setUserType(e.target.value)} required>
                 <option value="" disabled>
                   Tipo de usuario
                 </option>
@@ -106,7 +100,7 @@ function RegisterPage() {
                 id="email"
                 className={styles["register-form__input"]}
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={e => setEmail(e.target.value)}
                 placeholder="tucorreo@ejemplo.com"
                 required
               />
@@ -130,7 +124,7 @@ function RegisterPage() {
                 id="password"
                 className={styles["register-form__password-input"]}
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={e => setPassword(e.target.value)}
                 placeholder="Ingresa tu contraseña"
                 required
               />
@@ -151,4 +145,3 @@ function RegisterPage() {
 }
 
 export default RegisterPage;
-

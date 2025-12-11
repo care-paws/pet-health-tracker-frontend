@@ -12,6 +12,7 @@ body {
   align-items: flex-start;
   min-height: 100vh;
   background: #f0f0f0;
+  gap: 35px;
 }
 
 #root {
@@ -30,7 +31,7 @@ body {
   --color-border-alt: rgba(197, 112, 208, 0.8);
   --color-text: #000000;
   --color-white: #ffffff;
-  
+
   --font-roboto: "Roboto", sans-serif;
   --font-inter: "Inter", sans-serif;
 }
@@ -53,4 +54,3 @@ body {
 *::-webkit-scrollbar-thumb:hover {
   background: rgba(196, 140, 182, 0.7);
 }
-

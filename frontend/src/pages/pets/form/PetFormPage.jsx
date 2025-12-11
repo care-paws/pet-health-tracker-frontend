@@ -1,15 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logoUrl from "../assets/logo.svg";
-import dogIllustration from "../assets/dog-illustration.png";
-import pawPattern from "../assets/paw-pattern.png";
-import petDog from "../assets/pet-dog.png";
-import petCat from "../assets/pet-cat.png";
-import petBird from "../assets/pet-bird.png";
-import petRabbit from "../assets/pet-rabbit.png";
-import petHamster from "../assets/pet-hamster.png";
-import petTurtle from "../assets/pet-turtle.png";
-import { createPet, calculateAge, mapPetTypeToSpecies } from "../services/petService";
+import { dogIllustration, pawPattern, petBird, petCat, petDog, petHamster, petRabbit, petTurtle } from "../../../assets/images/images";
+import logoUrl from "../../assets/logo.svg";
+import { calculateAge, createPet, mapPetTypeToSpecies } from "../../../services/petService";
 import styles from "./PetFormPage.module.css";
 
 function PetFormPage() {
@@ -128,7 +121,7 @@ function PetFormPage() {
               className={styles["pet-form__input"]}
               placeholder="Ej Max"
               value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              onChange={e => setFormData({ ...formData, name: e.target.value })}
               required
             />
           </div>
@@ -142,7 +135,7 @@ function PetFormPage() {
               type="date"
               className={styles["pet-form__input"]}
               value={formData.birthDate}
-              onChange={(e) => setFormData({ ...formData, birthDate: e.target.value })}
+              onChange={e => setFormData({ ...formData, birthDate: e.target.value })}
               required
             />
           </div>
@@ -156,7 +149,7 @@ function PetFormPage() {
                   name="gender"
                   value="female"
                   checked={formData.gender === "female"}
-                  onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
+                  onChange={e => setFormData({ ...formData, gender: e.target.value })}
                 />
                 <span>Hembra ♀</span>
               </label>
@@ -166,7 +159,7 @@ function PetFormPage() {
                   name="gender"
                   value="male"
                   checked={formData.gender === "male"}
-                  onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
+                  onChange={e => setFormData({ ...formData, gender: e.target.value })}
                 />
                 <span>Macho ♂</span>
               </label>
@@ -183,7 +176,7 @@ function PetFormPage() {
               className={styles["pet-form__input"]}
               placeholder="Eje 3 kilogramos"
               value={formData.weight}
-              onChange={(e) => setFormData({ ...formData, weight: e.target.value })}
+              onChange={e => setFormData({ ...formData, weight: e.target.value })}
               required
             />
           </div>
@@ -201,7 +194,7 @@ function PetFormPage() {
                 { id: "cat", name: "Gato", image: petCat },
                 { id: "dog", name: "Perro", image: petDog },
                 { id: "rabbit", name: "Conejo", image: petRabbit },
-              ].map((pet) => (
+              ].map(pet => (
                 <div
                   key={pet.id}
                   className={`${styles["pet-type-card"]} ${formData.petType === pet.id ? styles["pet-type-card--selected"] : ""}`}
@@ -224,7 +217,7 @@ function PetFormPage() {
               className={styles["pet-form__input"]}
               placeholder="Raza de tu mascota"
               value={formData.breed}
-              onChange={(e) => setFormData({ ...formData, breed: e.target.value })}
+              onChange={e => setFormData({ ...formData, breed: e.target.value })}
             />
           </div>
 
@@ -236,7 +229,7 @@ function PetFormPage() {
               className={styles["pet-form__input"]}
               placeholder="Color de tu mascota"
               value={formData.color}
-              onChange={(e) => setFormData({ ...formData, color: e.target.value })}
+              onChange={e => setFormData({ ...formData, color: e.target.value })}
             />
           </div>
 
@@ -301,4 +294,3 @@ function PetFormPage() {
 }
 
 export default PetFormPage;
-

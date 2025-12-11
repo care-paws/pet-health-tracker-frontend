@@ -156,16 +156,16 @@
 .landing-page__main-content {
   position: absolute;
   top: 100px;
-  left: 6px;
-  width: 400px;
-  height: 687px;
+  width: 100%;
+  height: 737px;
   overflow-x: hidden;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 35px;
-  padding-bottom: 50px;
+  padding-top: 35px;
+  padding-bottom: 35px;
 }
 
 /* Hero Section Block */
@@ -177,7 +177,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 10px;
+  padding: 0px 10px 0px 10px;
 }
 
 .hero-section__title {
@@ -194,7 +194,7 @@
   font-family: var(--font-roboto);
   font-weight: 500;
   font-size: 20px;
-  line-height: normal;
+  line-height: 35px;
   color: var(--color-text);
   margin: 0;
   max-width: 400px;

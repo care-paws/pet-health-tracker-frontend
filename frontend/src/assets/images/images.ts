@@ -1,0 +1,8 @@
+export { default as dogIllustration } from "./dog-illustration.png";
+export { default as pawPattern } from "./paw-pattern.png";
+export { default as petBird } from "./pet-bird.png";
+export { default as petCat } from "./pet-cat.png";
+export { default as petDog } from "./pet-dog.png";
+export { default as petHamster } from "./pet-hamster.png";
+export { default as petRabbit } from "./pet-rabbit.png";
+export { default as petTurtle } from "./pet-turtle.png";

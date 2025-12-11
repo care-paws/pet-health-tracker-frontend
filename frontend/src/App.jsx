@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import CreatePetPage from "./pages/CreatePetPage";
-import LandingPage from "./pages/LandingPage";
-import LoginPage from "./pages/LoginPage";
-import PetFormPage from "./pages/PetFormPage";
-import RegisterPage from "./pages/RegisterPage";
+import LandingPage from "./pages/landing/LandingPage";
+import LoginPage from "./pages/login/LoginPage";
+import CreatePetPage from "./pages/pets/CreatePetPage";
+import PetFormPage from "./pages/pets/PetFormPage";
+import RegisterPage from "./pages/register/RegisterPage";
 
 function App() {
   return (

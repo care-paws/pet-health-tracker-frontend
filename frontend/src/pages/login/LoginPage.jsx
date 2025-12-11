@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logoUrl from "../assets/logo.svg";
-import { login } from "../services/authService";
+import logoUrl from "../../assets/logo.svg";
+import { login } from "../../services/authService";
 import styles from "./LoginPage.module.css";
 
 function LoginPage() {
