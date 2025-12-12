@@ -1,9 +1,10 @@
-import { calendarButtonIcon, hamburgerIcon, heartButtonIcon, plusButtonIcon } from "@/assets/icons/icons";
+import { calendarButtonIcon, heartButtonIcon, plusButtonIcon } from "@/assets/icons/icons";
 import logoUrl from "@/assets/logo.svg";
 import AppFooter from "@/components/AppFooter";
+import AppHeader from "@/components/AppHeader";
 import PageLayout from "@/layouts/PageLayout";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./LandingPage.module.css";
 
 function LandingPage() {
@@ -29,17 +30,13 @@ function LandingPage() {
   };
 
   const header = (
-    <header className={styles["landingPage__header"]}>
-      <div className={styles["landingPage__logo"]}>
-        <a href="/">
-          {/* Logo image from assets */}
+    <div className={styles["landingPage__headerWrap"]}>
+      <AppHeader className={styles["landingPage__header"]} showBackButton={false} showMenuButton={true} onMenuClick={toggleMenu} centerAlign="start">
+        <Link to="/">
           <img src={logoUrl} alt="App logo" width={110} height={70} />
-        </a>
-      </div>
-      <button className={styles["landingPage__menuButton"]} onClick={toggleMenu} aria-label="Toggle menu">
-        <img src={hamburgerIcon} alt="hamburger" width={40} height={40} />
-      </button>
-    </header>
+        </Link>
+      </AppHeader>
+    </div>
   );
 
   const footer = <AppFooter className={styles["landingPage__footer"]} />;

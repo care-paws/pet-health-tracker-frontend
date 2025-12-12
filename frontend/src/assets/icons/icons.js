@@ -6,3 +6,5 @@ export { default as hamburgerIcon } from "./hamburger.svg";
 export { default as heartButtonIcon } from "./heart-button.svg";
 export { default as heartIcon } from "./heart.svg";
 export { default as plusButtonIcon } from "./plus-button.svg";
+export { default as homeIcon } from "./home.svg";
+export { default as pawIcon } from "./paw.svg";

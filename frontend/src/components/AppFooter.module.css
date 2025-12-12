@@ -1,5 +1,8 @@
 .appFooter {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 16px 16px;
   width: 100%;
   max-width: 412px;
@@ -17,4 +20,46 @@
     transform: translateX(-50%);
     z-index: 10;
   }
+}
+
+.footerNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 34px;
+  width: 100%;
+}
+
+.footerButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.footerButton:hover {
+  transform: scale(1.05);
+}
+
+.footerButton:active {
+  transform: scale(0.95);
+}
+
+.footerIcon {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+.footerLabel {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  color: #ffebcc;
+  text-align: center;
+  margin-top: 4px;
+  white-space: nowrap;
 }

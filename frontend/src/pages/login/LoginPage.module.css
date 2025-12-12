@@ -29,7 +29,7 @@
 /* Main Content Block */
 .loginPage__main {
   flex: 1;
-  padding: 40px 24px 140px;
+  padding: 40px 24px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,6 +56,59 @@
   text-align: center;
   margin: 0 0 8px 0;
   max-width: 340px;
+}
+
+/* Demo Access Block */
+.demoAccess {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  max-width: 320px;
+  padding: 20px;
+  background: rgba(246, 231, 211, 0.3);
+  border: 2px dashed var(--color-secondary);
+  border-radius: 16px;
+  margin-top: 10px;
+}
+
+.demoAccess__title {
+  font-family: var(--font-roboto);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--color-secondary);
+  text-align: center;
+  margin: 0;
+}
+
+.demoAccess__button {
+  width: 100%;
+  max-width: 260px;
+  height: 44px;
+  background: var(--color-secondary);
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: var(--font-roboto);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: normal;
+  color: var(--color-white);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.demoAccess__button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+  background: #cc8844;
+}
+
+.demoAccess__button:active {
+  transform: translateY(0);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* Login Form Block */

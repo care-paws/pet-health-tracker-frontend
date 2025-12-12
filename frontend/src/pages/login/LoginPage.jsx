@@ -4,7 +4,7 @@ import AppHeader from "@/components/AppHeader";
 import PageLayout from "@/layouts/PageLayout";
 import { login } from "@/services/authService";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./LoginPage.module.css";
 
 function LoginPage() {
@@ -38,6 +38,11 @@ function LoginPage() {
     navigate("/");
   };
 
+  const handleDemoLogin = () => {
+    setEmail("r.guzmanap@gmail.com");
+    setPassword("contrasena123");
+  };
+
   const header = (
     <div className={styles["loginPage__headerWrap"]}>
       <AppHeader
@@ -48,7 +53,9 @@ function LoginPage() {
         onBackClick={handleBack}
         showMenuButton={false}
       >
-        <img src={logoUrl} alt="App logo" width={110} height={70} />
+        <Link to="/">
+          <img src={logoUrl} alt="App logo" width={110} height={70} />
+        </Link>
       </AppHeader>
     </div>
   );
@@ -133,6 +140,14 @@ function LoginPage() {
             Registrarse
           </button>
         </form>
+
+        {/* Demo Quick Access Section */}
+        <div className={styles["demoAccess"]}>
+          <h2 className={styles["demoAccess__title"]}>Acceso rápido de la demo</h2>
+          <button type="button" className={styles["demoAccess__button"]} onClick={handleDemoLogin}>
+            Ingresar como usuario
+          </button>
+        </div>
       </main>
     </PageLayout>
   );

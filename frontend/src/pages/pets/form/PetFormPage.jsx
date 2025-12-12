@@ -4,9 +4,9 @@ import logoUrl from "@/assets/logo.svg";
 import AppFooter from "@/components/AppFooter";
 import AppHeader from "@/components/AppHeader";
 import PageLayout from "@/layouts/PageLayout";
-import { calculateAge, createPet, mapPetTypeToSpecies } from "@/services/petService";
+import { createPet, mapPetTypeToSpecies } from "@/services/petService";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./PetFormPage.module.css";
 
 function PetFormPage() {
@@ -18,7 +18,6 @@ function PetFormPage() {
     weight: "",
     petType: "",
     breed: "",
-    color: "",
     photo: null,
   });
   const [error, setError] = useState("");
@@ -35,7 +34,7 @@ function PetFormPage() {
 
     try {
       // Validate required fields
-      if (!formData.name || !formData.birthDate || !formData.weight || !formData.petType) {
+      if (!formData.name || !formData.birthDate || !formData.weight || !formData.petType || !formData.gender) {
         throw new Error("Por favor completa todos los campos requeridos");
       }
 
@@ -43,11 +42,16 @@ function PetFormPage() {
         throw new Error("Por favor selecciona una foto de tu mascota");
       }
 
-      // Calculate age from birth date
-      const age = calculateAge(formData.birthDate);
-      if (age < 0) {
+      // Calculate age (ISO birthdate) and validate not future
+      const birth = new Date(formData.birthDate);
+      if (Number.isNaN(birth.getTime())) {
+        throw new Error("Fecha de nacimiento inválida");
+      }
+      const today = new Date();
+      if (birth > today) {
         throw new Error("La fecha de nacimiento no puede ser en el futuro");
       }
+      const birthIso = birth.toISOString();
 
       // Convert weight to number
       const weight = parseFloat(formData.weight);
@@ -58,13 +62,16 @@ function PetFormPage() {
       // Map pet type to species
       const species = mapPetTypeToSpecies(formData.petType);
 
-      // Prepare pet data
+      // Prepare pet data to match API contract (multipart/form-data)
       const petData = {
         name: formData.name,
         species: species,
-        breed: formData.breed || species, // Use species as breed if not provided
-        age: age,
-        weight: weight,
+        breed: formData.breed || species, // fallback
+        gender: formData.gender,
+        age: birthIso, // API expects ISO date string
+        weight,
+        weighedAt: undefined, // optional, not collected in UI
+        notes: undefined,
         photoUrl: formData.photo,
       };
 
@@ -99,7 +106,9 @@ function PetFormPage() {
         onBackClick={handleBack}
         showMenuButton={false}
       >
-        <img src={logoUrl} alt="Care Paws" width={110} height={70} />
+        <Link to="/">
+          <img src={logoUrl} alt="Care Paws" width={110} height={70} />
+        </Link>
       </AppHeader>
     </div>
   );
@@ -241,19 +250,6 @@ function PetFormPage() {
                 placeholder="Raza de tu mascota"
                 value={formData.breed}
                 onChange={e => setFormData({ ...formData, breed: e.target.value })}
-              />
-            </div>
-          </div>
-
-          <div className={styles["petForm__field"]}>
-            <label className={styles["petForm__label"]}>Color</label>
-            <div className={styles["petForm__inputWrapper"]}>
-              <input
-                type="text"
-                className={styles["petForm__input"]}
-                placeholder="Color de tu mascota"
-                value={formData.color}
-                onChange={e => setFormData({ ...formData, color: e.target.value })}
               />
             </div>
           </div>

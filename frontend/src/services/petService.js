@@ -7,9 +7,12 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
  * @param {string} petData.name - Pet name
  * @param {string} petData.species - Pet species (e.g., "Perro", "Gato")
  * @param {string} petData.breed - Pet breed
- * @param {number} petData.age - Pet age in years
+ * @param {string} petData.age - Birthdate as ISO string
+ * @param {string} petData.gender - male | female
  * @param {number} petData.weight - Pet weight in kilograms
- * @param {File} petData.photoUrl - Pet photo file
+ * @param {string} [petData.weighedAt] - ISO datetime of last weigh
+ * @param {string} [petData.notes] - Additional notes
+ * @param {File} petData.photoUrl - Pet photo file (required)
  * @returns {Promise<Object>} Created pet data
  */
 export const createPet = async petData => {
@@ -20,13 +23,19 @@ export const createPet = async petData => {
     formData.append("name", petData.name);
     formData.append("species", petData.species);
     formData.append("breed", petData.breed || "");
-    formData.append("age", petData.age.toString());
+    formData.append("gender", petData.gender);
+    formData.append("age", petData.age); // ISO string
     formData.append("weight", petData.weight.toString());
-
-    // Append photo if provided
-    if (petData.photoUrl) {
-      formData.append("photoUrl", petData.photoUrl);
+    if (petData.weighedAt) {
+      formData.append("weighedAt", petData.weighedAt);
     }
+    if (petData.notes) {
+      formData.append("notes", petData.notes);
+    }
+
+    // Append photo (required)
+    if (!petData.photoUrl) throw new Error("La foto es obligatoria");
+    formData.append("photoUrl", petData.photoUrl);
 
     const response = await fetch(`${API_BASE_URL}/api/pets`, {
       method: "POST",
@@ -196,4 +205,3 @@ export const mapPetTypeToSpecies = petTypeId => {
   };
   return speciesMap[petTypeId] || petTypeId;
 };
-

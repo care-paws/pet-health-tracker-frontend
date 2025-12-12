@@ -4,7 +4,7 @@ import AppHeader from "@/components/AppHeader";
 import PageLayout from "@/layouts/PageLayout";
 import { register } from "@/services/authService";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./RegisterPage.module.css";
 
 function RegisterPage() {
@@ -36,10 +36,18 @@ function RegisterPage() {
     navigate("/");
   };
 
+  const handleDemoRegister = () => {
+    setUserType("owner");
+    setEmail("r.guzmanap@gmail.com");
+    setPassword("contrasena123");
+  };
+
   const header = (
     <div className={styles["registerPage__headerWrap"]}>
       <AppHeader className={styles["registerPage__header"]} showBackButton={true} backPosition="right" centerAlign="start" onBackClick={handleBack}>
-        <img src={logoUrl} alt="Care Paws" width={110} height={70} />
+        <Link to="/">
+          <img src={logoUrl} alt="Care Paws" width={110} height={70} />
+        </Link>
       </AppHeader>
     </div>
   );
@@ -126,6 +134,14 @@ function RegisterPage() {
             {loading ? "Registrando..." : "Confirmar"}
           </button>
         </form>
+
+        {/* Demo Quick Access Section */}
+        <div className={styles["demoAccess"]}>
+          <h2 className={styles["demoAccess__title"]}>Acceso rápido de la demo</h2>
+          <button type="button" className={styles["demoAccess__button"]} onClick={handleDemoRegister}>
+            Ingresar como usuario
+          </button>
+        </div>
       </main>
     </PageLayout>
   );

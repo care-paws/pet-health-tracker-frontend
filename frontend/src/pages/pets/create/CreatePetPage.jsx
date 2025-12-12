@@ -3,7 +3,7 @@ import logoUrl from "@/assets/logo.svg";
 import AppFooter from "@/components/AppFooter";
 import AppHeader from "@/components/AppHeader";
 import PageLayout from "@/layouts/PageLayout";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./CreatePetPage.module.css";
 
 function CreatePetPage() {
@@ -27,7 +27,9 @@ function CreatePetPage() {
         onBackClick={handleBack}
         showMenuButton={false}
       >
-        <img src={logoUrl} alt="Care Paws" width={110} height={70} />
+        <Link to="/">
+          <img src={logoUrl} alt="Care Paws" width={110} height={70} />
+        </Link>
       </AppHeader>
     </div>
   );

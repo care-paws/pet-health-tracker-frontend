@@ -31,7 +31,6 @@
   background-size: cover;
   background-repeat: repeat;
   background-position: center;
-  position: relative;
   overflow: hidden;
 }
 
@@ -45,7 +44,7 @@
 
 .petFormPage__main {
   flex: 1;
-  padding: 14px 24px 140px;
+  padding: 14px 24px 30px;
   display: flex;
   flex-direction: column;
   gap: 16px;
