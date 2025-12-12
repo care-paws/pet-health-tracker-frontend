@@ -1,20 +1,20 @@
 .appFooter {
-  display: none;
+  display: block;
+  padding: 12px 16px;
+  width: 100%;
+  max-width: 412px;
+  height: 80px;
+  margin-top: auto;
+  position: relative; /* flows as a normal block in tall viewports */
+  background: transparent;
 }
 
 @media (max-height: 917px) {
   .appFooter {
-    display: block;
-    padding: 12px 16px;
-    width: 100%;
-    max-width: 412px;
     position: fixed;
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
-    margin-top: auto;
     z-index: 10;
-    height: 80px;
-    background: transparent;
   }
 }

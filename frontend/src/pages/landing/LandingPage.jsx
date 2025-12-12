@@ -101,7 +101,7 @@ function LandingPage() {
 
         {/* Step 2 Icon */}
         <div className={`${styles["stepIcon"]} ${styles["stepIconMedium"]}`}>
-          <img src={heartButtonIcon} alt="heart button" width={91} height={86} />
+          <img src={heartButtonIcon} alt="heart button" width={71} height={71} />
         </div>
         <section className={styles["step"]}>
           <h3 className={styles["step__title"]}>2. Agrega tus mascotas</h3>
@@ -110,7 +110,7 @@ function LandingPage() {
 
         {/* Step 3 Icon */}
         <div className={`${styles["stepIcon"]} ${styles["stepIconLarge"]}`}>
-          <img src={calendarButtonIcon} alt="calendar" width={89} height={93} />
+          <img src={calendarButtonIcon} alt="calendar" width={71} height={71} />
         </div>
         <section className={styles["step"]}>
           <h3 className={styles["step__title"]}>3. Registra y programa</h3>

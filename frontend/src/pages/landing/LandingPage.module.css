@@ -1,8 +1,9 @@
 /* Landing Page Block */
 .landingPage {
   position: relative;
-  width: 412px;
-  height: 917px;
+  width: 100%;
+  max-width: 412px;
+  min-height: 100vh;
   background: var(--color-primary);
   overflow: hidden;
   margin: 0 auto;
@@ -10,10 +11,11 @@
 
 /* Header Block */
 .landingPage__header {
-  position: absolute;
+  position: sticky;
   top: 0;
   left: 0;
-  width: 412px;
+  width: 100%;
+  max-width: 412px;
   height: 100px;
   background: var(--color-border);
   display: flex;
@@ -151,15 +153,15 @@
 /* Main Content Block */
 .landingPage__mainContent {
   width: 100%;
-  height: 100vh;
+  min-height: calc(100vh - 100px);
   overflow-x: hidden;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 35px;
-  padding-top: 150px;
-  padding-bottom: 130px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 /* Hero Section Block */
