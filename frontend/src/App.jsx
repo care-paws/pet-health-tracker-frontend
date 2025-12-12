@@ -2,6 +2,7 @@ import LandingPage from "@/pages/landing/LandingPage";
 import LoginPage from "@/pages/login/LoginPage";
 import CreatePetPage from "@/pages/pets/create/CreatePetPage";
 import PetFormPage from "@/pages/pets/form/PetFormPage";
+import PetListPage from "@/pages/pets/list/PetListPage";
 import RegisterPage from "@/pages/register/RegisterPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -14,6 +15,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/create-pet" element={<CreatePetPage />} />
         <Route path="/pet-form" element={<PetFormPage />} />
+        <Route path="/pets" element={<PetListPage />} />
       </Routes>
     </BrowserRouter>
   );

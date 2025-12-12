@@ -1,0 +1,342 @@
+/* Pet List Page mobile-first 412x917 */
+.petListPage {
+  width: 100%;
+  max-width: 412px;
+  min-height: 917px;
+  background: var(--color-primary);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.petListPage__headerWrap {
+  background: rgba(196, 140, 182, 0.8);
+  padding: 20px 24px;
+}
+
+.petListPage__header {
+  color: var(--color-white);
+}
+
+.petListPage__main {
+  flex: 1;
+  padding: 80px 16px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  min-height: calc(917px - 100px - 51px);
+}
+
+/* Add Pet Button */
+.addPetButton {
+  width: 280px;
+  height: 66px;
+  background: var(--color-accent);
+  border: 3px solid rgba(197, 112, 208, 0.8);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 10px 20px 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.addPetButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.addPetButton:active {
+  transform: translateY(0);
+}
+
+.addPetButton span {
+  font-family: var(--font-roboto);
+  font-weight: 500;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.8);
+  white-space: nowrap;
+}
+
+.addPetButton__icon {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+}
+
+/* Loading and Error States */
+.loadingState,
+.errorState {
+  width: 348px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.loadingState p,
+.errorState p {
+  font-family: var(--font-roboto);
+  font-weight: 500;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.7);
+  margin: 0 0 20px;
+}
+
+.retryButton {
+  padding: 12px 24px;
+  background: var(--color-accent);
+  border: 2px solid rgba(197, 112, 208, 0.8);
+  border-radius: 8px;
+  font-family: var(--font-roboto);
+  font-weight: 600;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.retryButton:hover {
+  background: rgba(255, 235, 204, 0.9);
+  transform: translateY(-1px);
+}
+
+.retryButton:active {
+  transform: translateY(0);
+}
+
+/* Pet Card */
+.petCard {
+  width: 348px;
+  background: var(--color-accent);
+  border-radius: 20px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.petCard__imageWrapper {
+  position: relative;
+  height: 148.481px;
+  overflow: hidden;
+}
+
+.petCard__background {
+  position: absolute;
+  top: -181px;
+  left: -107px;
+  width: 500px;
+  height: 500px;
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center;
+}
+
+.petCard__photoCircle {
+  position: absolute;
+  top: 31px;
+  left: 98px;
+  width: 123px;
+  height: 117px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.petCard__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.petCard__cameraButton {
+  position: absolute;
+  top: 108px;
+  left: 218px;
+  width: 41px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.petCard__cameraCircle {
+  width: 100%;
+  height: 100%;
+  background: #ffc1b2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.petCard__cameraButton:hover .petCard__cameraCircle {
+  background: rgba(196, 140, 182, 0.9);
+  transform: scale(1.05);
+}
+
+.petCard__info {
+  padding: 15px 28px 25px;
+}
+
+.petCard__details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.petCard__genderIcon {
+  width: 27px;
+  height: 27px;
+  flex-shrink: 0;
+}
+
+.petCard__tag {
+  height: 29px;
+  border: 1px solid #c48cb6;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-roboto);
+  font-weight: 700;
+  font-size: 16px;
+  color: #000000;
+  white-space: nowrap;
+}
+
+.petCard__stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.petCard__statButton {
+  width: 80px;
+  height: 34px;
+  background: #c48cb6;
+  border: none;
+  border-radius: 100px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.petCard__statButton:hover {
+  background: rgba(196, 140, 182, 0.9);
+  transform: translateY(-1px);
+}
+
+.petCard__statButton:active {
+  transform: translateY(0);
+}
+
+.petCard__statIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.petCard__statButton span {
+  font-family: var(--font-roboto);
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+/* Feature Cards */
+.featureCards {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.featureCard {
+  width: 100%;
+  height: 199px;
+  background: var(--color-accent);
+  border-radius: 20px;
+  padding: 37px 32px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.featureCard__content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.featureCard__title {
+  font-family: var(--font-roboto);
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.2;
+  color: #c48cb6;
+  margin: 0;
+}
+
+.featureCard__description {
+  font-family: var(--font-roboto);
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 1.2;
+  color: #000000;
+  margin: 0;
+  max-width: 337px;
+}
+
+.featureCard__icon {
+  position: absolute;
+  top: 28px;
+  right: 32px;
+  width: 52px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featureCard__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 412px) {
+  .petListPage__main {
+    padding: 80px 6px 30px;
+  }
+
+  .addPetButton {
+    max-width: calc(100% - 32px);
+  }
+
+  .petCard {
+    max-width: calc(100% - 24px);
+  }
+
+  .featureCards {
+    max-width: calc(100% - 12px);
+  }
+}

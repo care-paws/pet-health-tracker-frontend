@@ -1,5 +1,6 @@
+export { default as backgroundPet } from "./background-pet.png";
 export { default as dogIllustration } from "./dog-illustration.png";
-export { default as pawPattern } from "./paw-pattern.png";
+export { default as pawPattern } from "./paw-pattern-pink.svg";
 export { default as petBird } from "./pet-bird.png";
 export { default as petCat } from "./pet-cat.png";
 export { default as petDog } from "./pet-dog.png";
