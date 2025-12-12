@@ -1,5 +1,7 @@
 import { dogIllustration, pawPattern, petBird, petCat, petDog, petHamster, petRabbit, petTurtle } from "@/assets/images/images";
-import logoUrl from "@/assets/logo.svg";
+import AppFooter from "@/components/AppFooter";
+import AppHeader from "@/components/AppHeader";
+import PageLayout from "@/layouts/PageLayout";
 import { calculateAge, createPet, mapPetTypeToSpecies } from "@/services/petService";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -70,7 +72,7 @@ function PetFormPage() {
       if (result.success) {
         console.log("Pet created successfully:", result.pet);
         // Navigate to a success page or pets list
-        // For now, navigate back to create_pet page
+        // For now, navigate back to create-pet page
         navigate("/create-pet");
       }
     } catch (err) {
@@ -85,20 +87,12 @@ function PetFormPage() {
     navigate("/create-pet");
   };
 
-  return (
-    <div className={styles["petFormPage"]}>
-      {/* Header */}
-      <header className={styles["petFormPage__header"]}>
-        <div className={styles["petFormPage__logo"]}>
-          <img src={logoUrl} alt="App logo" width={104} height={66} />
-        </div>
-        <button className={styles["petFormPage__backButton"]} onClick={handleBack} aria-label="Back">
-          <svg width="42" height="42" viewBox="0 0 24 24" fill="none">
-            <path d="M15 18L9 12L15 6" stroke="#C48CB6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
-      </header>
+  const header = <AppHeader showBackButton={true} onBackClick={handleBack} showMenuButton={false} />;
 
+  const footer = <AppFooter />;
+
+  return (
+    <PageLayout header={header} footer={footer}>
       {/* Hero Image with Paw Pattern */}
       <div className={styles["petFormPage__hero"]}>
         <img src={pawPattern} alt="" className={styles["petFormPage__patternBg"]} />
@@ -192,7 +186,7 @@ function PetFormPage() {
                 { id: "hamster", name: "Cobayo", image: petHamster },
                 { id: "bird", name: "Loro", image: petBird },
                 { id: "cat", name: "Gato", image: petCat },
-                { id: "dog", name: "Perro", image: petDog },
+                { id: "dog", name: "Perro", name: "Perro", image: petDog },
                 { id: "rabbit", name: "Conejo", image: petRabbit },
               ].map(pet => (
                 <div
@@ -286,10 +280,7 @@ function PetFormPage() {
           </div>
         </form>
       </main>
-
-      {/* Footer Navigation Bar */}
-      <footer className={styles["petFormPage__footer"]}></footer>
-    </div>
+    </PageLayout>
   );
 }
 

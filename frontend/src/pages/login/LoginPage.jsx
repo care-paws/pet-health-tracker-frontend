@@ -1,4 +1,6 @@
-import logoUrl from "@/assets/logo.svg";
+import AppFooter from "@/components/AppFooter";
+import AppHeader from "@/components/AppHeader";
+import PageLayout from "@/layouts/PageLayout";
 import { login } from "@/services/authService";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -35,20 +37,12 @@ function LoginPage() {
     navigate("/");
   };
 
-  return (
-    <div className={styles["loginPage"]}>
-      {/* Header */}
-      <header className={styles["loginPage__header"]}>
-        <div className={styles["loginPage__logo"]}>
-          <img src={logoUrl} alt="App logo" width={110} height={70} />
-        </div>
-        <button className={styles["loginPage__backButton"]} onClick={handleBack} aria-label="Back">
-          <svg width="42" height="42" viewBox="0 0 24 24" fill="none">
-            <path d="M15 18L9 12L15 6" stroke="#C48CB6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
-      </header>
+  const header = <AppHeader showBackButton={true} onBackClick={handleBack} showMenuButton={false} />;
 
+  const footer = <AppFooter />;
+
+  return (
+    <PageLayout header={header} footer={footer}>
       {/* Main Content */}
       <main className={styles["loginPage__main"]}>
         <h1 className={styles["loginPage__title"]}>Inicia sesión</h1>
@@ -126,10 +120,7 @@ function LoginPage() {
           </button>
         </form>
       </main>
-
-      {/* Footer Navigation Bar */}
-      <footer className={styles["loginPage__footer"]}></footer>
-    </div>
+    </PageLayout>
   );
 }
 

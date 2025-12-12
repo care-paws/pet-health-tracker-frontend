@@ -1,4 +1,7 @@
 import logoUrl from "@/assets/logo.svg";
+import AppFooter from "@/components/AppFooter";
+import AppHeader from "@/components/AppHeader";
+import PageLayout from "@/layouts/PageLayout";
 import { register } from "@/services/authService";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -20,13 +23,10 @@ function RegisterPage() {
     try {
       const result = await register({ email, password, userType });
       if (result.success) {
-        console.log("Registration successful:", result.message);
-        // Navigate to create pet page after successful registration
         navigate("/create-pet");
       }
     } catch (err) {
       setError(err.message || "Error al registrarse. Por favor, intenta de nuevo.");
-      console.error("Registration error:", err);
     } finally {
       setLoading(false);
     }
@@ -36,23 +36,12 @@ function RegisterPage() {
     navigate("/");
   };
 
-  return (
-    <div className={styles["registerPage"]}>
-      {/* Header */}
-      <header className={styles["registerPage__header"]}>
-        <div className={styles["registerPage__logo"]}>
-          <img src={logoUrl} alt="App logo" width={110} height={70} />
-        </div>
-        <button className={styles["registerPage__backButton"]} onClick={handleBack} aria_label="Back">
-          <svg width="42" height="42" viewBox="0 0 24 24" fill="none">
-            <path d="M15 18L9 12L15 6" stroke="#C48CB6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
-      </header>
+  const header = <AppHeader showBackButton={true} onBackClick={handleBack} showMenuButton={false} />;
+  const footer = <AppFooter />;
 
-      {/* Main Content */}
+  return (
+    <PageLayout header={header} footer={footer}>
       <main className={styles["registerPage__main"]}>
-        {/* Logo Grande */}
         <div className={styles["registerPage__logoLarge"]}>
           <img src={logoUrl} alt="Care Paws" />
         </div>
@@ -60,10 +49,8 @@ function RegisterPage() {
         <h1 className={styles["registerPage__title"]}>Registrarse</h1>
 
         <form className={styles["registerForm"]} onSubmit={handleSubmit}>
-          {/* Error Message */}
           {error && <div className={styles["registerForm__error"]}>{error}</div>}
 
-          {/* User Type Field */}
           <div className={styles["registerForm__field"]}>
             <div className={styles["registerForm__selectWrapper"]}>
               <select id="userType" className={styles["registerForm__select"]} value={userType} onChange={e => setUserType(e.target.value)} required>
@@ -77,7 +64,6 @@ function RegisterPage() {
             </div>
           </div>
 
-          {/* Email Field */}
           <div className={styles["registerForm__field"]}>
             <label className={styles["registerForm__label"]} htmlFor="email">
               Email
@@ -107,7 +93,6 @@ function RegisterPage() {
             </div>
           </div>
 
-          {/* Password Field */}
           <div className={styles["registerForm__field"]}>
             <label className={styles["registerForm__label"]} htmlFor="password">
               Contraseña
@@ -131,16 +116,12 @@ function RegisterPage() {
             </div>
           </div>
 
-          {/* Submit Button */}
           <button type="submit" className={styles["registerForm__submitButton"]} disabled={loading}>
             {loading ? "Registrando..." : "Confirmar"}
           </button>
         </form>
       </main>
-
-      {/* Footer Navigation Bar */}
-      <footer className={styles["registerPage__footer"]}></footer>
-    </div>
+    </PageLayout>
   );
 }
 

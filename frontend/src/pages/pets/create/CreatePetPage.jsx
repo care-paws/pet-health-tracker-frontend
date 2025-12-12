@@ -1,4 +1,6 @@
-import logoUrl from "@/assets/logo.svg";
+import AppFooter from "@/components/AppFooter";
+import AppHeader from "@/components/AppHeader";
+import PageLayout from "@/layouts/PageLayout";
 import { useNavigate } from "react-router-dom";
 import styles from "./CreatePetPage.module.css";
 
@@ -10,23 +12,15 @@ function CreatePetPage() {
   };
 
   const handleCreateFirst = () => {
-    navigate("/pet_form");
+    navigate("/pet-form");
   };
 
-  return (
-    <div className={styles["createPetPage"]}>
-      {/* Header */}
-      <header className={styles["createPetPage__header"]}>
-        <div className={styles["createPetPage__logo"]}>
-          <img src={logoUrl} alt="App logo" width={104} height={66} />
-        </div>
-        <button className={styles["createPetPage__backButton"]} onClick={handleBack} aria_label="Back">
-          <svg width="42" height="42" viewBox="0 0 24 24" fill="none">
-            <path d="M15 18L9 12L15 6" stroke="#C48CB6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
-      </header>
+  const header = <AppHeader showBackButton={true} onBackClick={handleBack} showMenuButton={false} />;
 
+  const footer = <AppFooter />;
+
+  return (
+    <PageLayout header={header} footer={footer}>
       {/* Main Content */}
       <main className={styles["createPetPage__main"]}>
         {/* Paw Pattern Image */}
@@ -42,10 +36,7 @@ function CreatePetPage() {
           </button>
         </div>
       </main>
-
-      {/* Footer Navigation Bar */}
-      <footer className={styles["createPetPage__footer"]}></footer>
-    </div>
+    </PageLayout>
   );
 }
 

@@ -1,4 +1,6 @@
+import { hamburgerIcon, heartButtonIcon, plusButtonIcon } from "@/assets/icons/icons";
 import logoUrl from "@/assets/logo.svg";
+import PageLayout from "@/layouts/PageLayout";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./LandingPage.module.css";
@@ -25,23 +27,24 @@ function LandingPage() {
     navigate("/register");
   };
 
-  return (
-    <div className={styles["landingPage"]}>
-      {/* Header */}
-      <header className={styles["landingPage__header"]}>
-        <div className={styles["landingPage__logo"]}>
+  const header = (
+    <header className={styles["landingPage__header"]}>
+      <div className={styles["landingPage__logo"]}>
+        <a href="/">
           {/* Logo image from assets */}
           <img src={logoUrl} alt="App logo" width={110} height={70} />
-        </div>
-        <button className={styles["landingPage__menuButton"]} onClick={toggleMenu} aria-label="Toggle menu">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-            <rect x="5" y="10" width="30" height="3" fill="#FFEBCC" rx="1.5" />
-            <rect x="5" y="18.5" width="30" height="3" fill="#FFEBCC" rx="1.5" />
-            <rect x="5" y="27" width="30" height="3" fill="#FFEBCC" rx="1.5" />
-          </svg>
-        </button>
-      </header>
+        </a>
+      </div>
+      <button className={styles["landingPage__menuButton"]} onClick={toggleMenu} aria-label="Toggle menu">
+        <img src={hamburgerIcon} alt="hamburger" width={40} height={40} />
+      </button>
+    </header>
+  );
 
+  const footer = <footer className={styles["landingPage__footer"]}></footer>;
+
+  return (
+    <PageLayout className={styles.landingPage} header={header} footer={footer}>
       {/* Menu Overlay */}
       {isMenuOpen && <div className={styles["menuOverlay"]} onClick={closeMenu}></div>}
 
@@ -88,10 +91,7 @@ function LandingPage() {
 
         {/* Step 1 */}
         <div className={styles["stepIcon"]}>
-          <svg width="71" height="71" viewBox="0 0 71 71" fill="none">
-            <rect x="8" y="8" width="55" height="55" rx="10" fill="#FFFFFF" opacity="0.3" />
-            <path d="M35.5 25V46M25 35.5H46" stroke="#C48CB6" strokeWidth="4" strokeLinecap="round" />
-          </svg>
+          <img src={plusButtonIcon} alt="plus button" width={71} height={71} />
         </div>
         <section className={styles["step"]}>
           <h3 className={styles["step__title"]}>1. Crea tu cuenta</h3>
@@ -100,13 +100,7 @@ function LandingPage() {
 
         {/* Step 2 Icon */}
         <div className={`${styles["stepIcon"]} ${styles["stepIconMedium"]}`}>
-          <svg width="91" height="86" viewBox="0 0 91 86" fill="none">
-            <circle cx="45.5" cy="43" r="35" fill="#FFFFFF" opacity="0.2" />
-            <path d="M45.5 25C35 25 28 35 28 45C28 55 35 62 45.5 62C56 62 63 55 63 45C63 35 56 25 45.5 25Z" fill="#C48CB6" />
-            <circle cx="40" cy="42" r="3" fill="#FFF" />
-            <circle cx="51" cy="42" r="3" fill="#FFF" />
-            <path d="M38 52C38 52 41 55 45.5 55C50 55 53 52 53 52" stroke="#FFF" strokeWidth="2" strokeLinecap="round" />
-          </svg>
+          <img src={heartButtonIcon} alt="heart button" width={91} height={86} />
         </div>
         <section className={styles["step"]}>
           <h3 className={styles["step__title"]}>2. Agrega tus mascotas</h3>
@@ -184,10 +178,7 @@ function LandingPage() {
         {/* CTA Button */}
         <button className={styles["ctaButton"]}>Comenzar ahora</button>
       </main>
-
-      {/* Footer Navigation Bar */}
-      <footer className={styles["landingPage__footer"]}></footer>
-    </div>
+    </PageLayout>
   );
 }
 
