@@ -1,5 +1,6 @@
-import { hamburgerIcon, heartButtonIcon, plusButtonIcon } from "@/assets/icons/icons";
+import { calendarButtonIcon, hamburgerIcon, heartButtonIcon, plusButtonIcon } from "@/assets/icons/icons";
 import logoUrl from "@/assets/logo.svg";
+import AppFooter from "@/components/AppFooter";
 import PageLayout from "@/layouts/PageLayout";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -41,7 +42,7 @@ function LandingPage() {
     </header>
   );
 
-  const footer = <footer className={styles["landingPage__footer"]}></footer>;
+  const footer = <AppFooter className={styles["landingPage__footer"]} />;
 
   return (
     <PageLayout className={styles.landingPage} header={header} footer={footer}>
@@ -109,11 +110,7 @@ function LandingPage() {
 
         {/* Step 3 Icon */}
         <div className={`${styles["stepIcon"]} ${styles["stepIconLarge"]}`}>
-          <svg width="89" height="93" viewBox="0 0 89 93" fill="none">
-            <rect x="15" y="20" width="60" height="65" rx="5" fill="#C48CB6" opacity="0.2" />
-            <rect x="20" y="15" width="50" height="5" rx="2.5" fill="#C48CB6" />
-            <path d="M30 35H60M30 45H60M30 55H60M30 65H50" stroke="#C48CB6" strokeWidth="3" strokeLinecap="round" />
-          </svg>
+          <img src={calendarButtonIcon} alt="calendar" width={89} height={93} />
         </div>
         <section className={styles["step"]}>
           <h3 className={styles["step__title"]}>3. Registra y programa</h3>

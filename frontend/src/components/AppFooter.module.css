@@ -1,3 +1,20 @@
 .appFooter {
-  padding: 12px 16px;
+  display: none;
+}
+
+@media (max-height: 917px) {
+  .appFooter {
+    display: block;
+    padding: 12px 16px;
+    width: 100%;
+    max-width: 412px;
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    margin-top: auto;
+    z-index: 10;
+    height: 80px;
+    background: transparent;
+  }
 }

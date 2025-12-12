@@ -144,28 +144,22 @@
 }
 
 .landingPage__footer {
-  position: absolute;
-  top: 837px;
-  left: 0;
-  width: 412px;
   height: 80px;
   background: rgba(196, 140, 182, 0.81);
 }
 
 /* Main Content Block */
 .landingPage__mainContent {
-  position: absolute;
-  top: 100px;
   width: 100%;
-  height: 737px;
+  height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 35px;
-  padding-top: 35px;
-  padding-bottom: 35px;
+  padding-top: 150px;
+  padding-bottom: 130px;
 }
 
 /* Hero Section Block */

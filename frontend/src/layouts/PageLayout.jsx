@@ -5,7 +5,7 @@ function PageLayout({ className, header, footer, children }) {
   return (
     <div className={`${styles.pageLayout} ${className || ""}`.trim()}>
       {header}
-      {children}
+      <div className={styles.pageLayout__content}>{children}</div>
       {footer}
     </div>
   );
