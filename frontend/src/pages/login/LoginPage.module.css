@@ -1,5 +1,5 @@
 /* Login Page Block */
-.login-page {
+.loginPage {
   position: relative;
   width: 412px;
   height: 917px;
@@ -9,7 +9,7 @@
 }
 
 /* Header Block */
-.login-page__header {
+.loginPage__header {
   position: absolute;
   top: 0;
   left: 0;
@@ -22,12 +22,12 @@
   padding: 0 20px;
 }
 
-.login-page__logo {
+.loginPage__logo {
   width: 110px;
   height: 70px;
 }
 
-.login-page__back-button {
+.loginPage__backButton {
   width: 42px;
   height: 42px;
   background: transparent;
@@ -40,7 +40,7 @@
 }
 
 /* Footer Block */
-.login-page__footer {
+.loginPage__footer {
   position: absolute;
   top: 837px;
   left: 0;
@@ -50,7 +50,7 @@
 }
 
 /* Main Content Block */
-.login-page__main {
+.loginPage__main {
   position: absolute;
   top: 100px;
   left: 0;
@@ -58,7 +58,7 @@
   height: 737px;
 }
 
-.login-page__title {
+.loginPage__title {
   position: absolute;
   top: 48px;
   left: 206px;
@@ -73,7 +73,7 @@
   width: 204px;
 }
 
-.login-page__subtitle {
+.loginPage__subtitle {
   position: absolute;
   top: 108px;
   left: 206px;
@@ -90,7 +90,7 @@
 }
 
 /* Login Form Block */
-.login-form {
+.loginForm {
   position: absolute;
   bottom: 53px;
   right: 50px;
@@ -101,7 +101,7 @@
   height: 471px;
 }
 
-.login-form__error {
+.loginForm__error {
   background: rgba(254, 57, 57, 0.1);
   border: 1px solid #fe3939;
   border-radius: 10px;
@@ -112,13 +112,13 @@
   text-align: center;
 }
 
-.login-form__field {
+.loginForm__field {
   display: flex;
   flex-direction: column;
   gap: 21px;
 }
 
-.login-form__label {
+.loginForm__label {
   font-family: var(--font-roboto);
   font-weight: 500;
   font-size: 18px;
@@ -127,7 +127,7 @@
   margin: 0;
 }
 
-.login-form__input-wrapper {
+.loginForm__inputWrapper {
   position: relative;
   display: flex;
   align-items: center;
@@ -139,7 +139,7 @@
   box-sizing: border-box;
 }
 
-.login-form__password-wrapper {
+.loginForm__passwordWrapper {
   position: relative;
   display: flex;
   align-items: center;
@@ -152,7 +152,7 @@
   box-sizing: border-box;
 }
 
-.login-form__password-icon {
+.loginForm__passwordIcon {
   width: 40px;
   height: 40px;
   display: flex;
@@ -163,7 +163,7 @@
   opacity: 0.5;
 }
 
-.login-form__icon {
+.loginForm__icon {
   width: 40px;
   height: 40px;
   display: flex;
@@ -173,7 +173,7 @@
   margin-right: 27px;
 }
 
-.login-form__input {
+.loginForm__input {
   flex: 1;
   background: transparent;
   border: none;
@@ -186,12 +186,12 @@
   opacity: 0.8;
 }
 
-.login-form__input::placeholder {
+.loginForm__input::placeholder {
   color: var(--color-text);
   opacity: 0.8;
 }
 
-.login-form__submit-button {
+.loginForm__submitButton {
   width: 207px;
   height: 44px;
   background: var(--color-accent);
@@ -208,22 +208,22 @@
   transition: all 0.2s ease;
 }
 
-.login-form__submit-button:hover {
+.loginForm__submitButton:hover {
   transform: translateY(-1px);
   box-shadow: 2px 6px 6px 0px rgba(0, 0, 0, 0.3);
 }
 
-.login-form__submit-button:active {
+.loginForm__submitButton:active {
   transform: translateY(0);
   box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
 }
 
-.login-form__submit-button:disabled {
+.loginForm__submitButton:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-.login-form__forgot-password {
+.loginForm__forgotPassword {
   font-family: var(--font-roboto);
   font-weight: 500;
   font-size: 15px;
@@ -235,11 +235,11 @@
   transition: opacity 0.2s ease;
 }
 
-.login-form__forgot-password:hover {
+.loginForm__forgotPassword:hover {
   opacity: 0.7;
 }
 
-.login-form__register-button {
+.loginForm__registerButton {
   width: 192px;
   height: 45px;
   background: var(--color-accent);
@@ -256,17 +256,17 @@
   transition: all 0.2s ease;
 }
 
-.login-form__register-button:hover {
+.loginForm__registerButton:hover {
   transform: translateY(-1px);
   box-shadow: 2px 6px 6px 0px rgba(0, 0, 0, 0.3);
 }
 
-.login-form__register-button:active {
+.loginForm__registerButton:active {
   transform: translateY(0);
   box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
 }
 
-.login-form__password-input {
+.loginForm__passwordInput {
   flex: 1;
   background: transparent;
   border: none;
@@ -279,8 +279,7 @@
   opacity: 0.8;
 }
 
-.login-form__password-input::placeholder {
+.loginForm__passwordInput::placeholder {
   color: var(--color-text);
   opacity: 0.8;
 }
-

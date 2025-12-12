@@ -1,7 +1,7 @@
 import logoUrl from "@/assets/logo.svg";
 import { register } from "@/services/authService";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react_router_dom";
 import styles from "./RegisterPage.module.css";
 
 function RegisterPage() {
@@ -37,13 +37,13 @@ function RegisterPage() {
   };
 
   return (
-    <div className={styles["register-page"]}>
+    <div className={styles["registerPage"]}>
       {/* Header */}
-      <header className={styles["register-page__header"]}>
-        <div className={styles["register-page__logo"]}>
+      <header className={styles["registerPage__header"]}>
+        <div className={styles["registerPage__logo"]}>
           <img src={logoUrl} alt="App logo" width={110} height={70} />
         </div>
-        <button className={styles["register-page__back-button"]} onClick={handleBack} aria-label="Back">
+        <button className={styles["registerPage__backButton"]} onClick={handleBack} aria_label="Back">
           <svg width="42" height="42" viewBox="0 0 24 24" fill="none">
             <path d="M15 18L9 12L15 6" stroke="#C48CB6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -51,22 +51,22 @@ function RegisterPage() {
       </header>
 
       {/* Main Content */}
-      <main className={styles["register-page__main"]}>
+      <main className={styles["registerPage__main"]}>
         {/* Logo Grande */}
-        <div className={styles["register-page__logo-large"]}>
+        <div className={styles["registerPage__logoLarge"]}>
           <img src={logoUrl} alt="Care Paws" />
         </div>
 
-        <h1 className={styles["register-page__title"]}>Registrarse</h1>
+        <h1 className={styles["registerPage__title"]}>Registrarse</h1>
 
-        <form className={styles["register-form"]} onSubmit={handleSubmit}>
+        <form className={styles["registerForm"]} onSubmit={handleSubmit}>
           {/* Error Message */}
-          {error && <div className={styles["register-form__error"]}>{error}</div>}
+          {error && <div className={styles["registerForm__error"]}>{error}</div>}
 
           {/* User Type Field */}
-          <div className={styles["register-form__field"]}>
-            <div className={styles["register-form__select-wrapper"]}>
-              <select id="userType" className={styles["register-form__select"]} value={userType} onChange={e => setUserType(e.target.value)} required>
+          <div className={styles["registerForm__field"]}>
+            <div className={styles["registerForm__selectWrapper"]}>
+              <select id="userType" className={styles["registerForm__select"]} value={userType} onChange={e => setUserType(e.target.value)} required>
                 <option value="" disabled>
                   Tipo de usuario
                 </option>
@@ -78,12 +78,12 @@ function RegisterPage() {
           </div>
 
           {/* Email Field */}
-          <div className={styles["register-form__field"]}>
-            <label className={styles["register-form__label"]} htmlFor="email">
+          <div className={styles["registerForm__field"]}>
+            <label className={styles["registerForm__label"]} htmlFor="email">
               Email
             </label>
-            <div className={styles["register-form__input-wrapper"]}>
-              <div className={styles["register-form__icon"]}>
+            <div className={styles["registerForm__inputWrapper"]}>
+              <div className={styles["registerForm__icon"]}>
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"
@@ -98,7 +98,7 @@ function RegisterPage() {
               <input
                 type="email"
                 id="email"
-                className={styles["register-form__input"]}
+                className={styles["registerForm__input"]}
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 placeholder="tucorreo@ejemplo.com"
@@ -108,12 +108,12 @@ function RegisterPage() {
           </div>
 
           {/* Password Field */}
-          <div className={styles["register-form__field"]}>
-            <label className={styles["register-form__label"]} htmlFor="password">
+          <div className={styles["registerForm__field"]}>
+            <label className={styles["registerForm__label"]} htmlFor="password">
               Contraseña
             </label>
-            <div className={styles["register-form__password-wrapper"]}>
-              <div className={styles["register-form__password-icon"]}>
+            <div className={styles["registerForm__passwordWrapper"]}>
+              <div className={styles["registerForm__passwordIcon"]}>
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
                   <rect x="3" y="11" width="18" height="11" rx="2" fill="#000000" />
                   <path d="M7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11" stroke="#000000" strokeWidth="2" strokeLinecap="round" />
@@ -122,7 +122,7 @@ function RegisterPage() {
               <input
                 type="password"
                 id="password"
-                className={styles["register-form__password-input"]}
+                className={styles["registerForm__passwordInput"]}
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 placeholder="Ingresa tu contraseña"
@@ -132,14 +132,14 @@ function RegisterPage() {
           </div>
 
           {/* Submit Button */}
-          <button type="submit" className={styles["register-form__submit-button"]} disabled={loading}>
+          <button type="submit" className={styles["registerForm__submitButton"]} disabled={loading}>
             {loading ? "Registrando..." : "Confirmar"}
           </button>
         </form>
       </main>
 
       {/* Footer Navigation Bar */}
-      <footer className={styles["register-page__footer"]}></footer>
+      <footer className={styles["registerPage__footer"]}></footer>
     </div>
   );
 }

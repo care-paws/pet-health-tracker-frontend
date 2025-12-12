@@ -1,5 +1,5 @@
 /* Landing Page Block */
-.landing-page {
+.landingPage {
   position: relative;
   width: 412px;
   height: 917px;
@@ -9,7 +9,7 @@
 }
 
 /* Header Block */
-.landing-page__header {
+.landingPage__header {
   position: absolute;
   top: 0;
   left: 0;
@@ -22,12 +22,12 @@
   padding: 0 20px;
 }
 
-.landing-page__logo {
+.landingPage__logo {
   width: 110px;
   height: 70px;
 }
 
-.landing-page__menu-button {
+.landingPage__menuButton {
   width: 40px;
   height: 40px;
   background: transparent;
@@ -37,7 +37,7 @@
 }
 
 /* Menu Overlay */
-.menu-overlay {
+.menuOverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -48,7 +48,7 @@
 }
 
 /* Side Menu Block */
-.side-menu {
+.sideMenu {
   position: fixed;
   top: 0;
   right: -300px;
@@ -61,11 +61,11 @@
   flex-direction: column;
 }
 
-.side-menu--open {
+.sideMenuOpen {
   right: 0;
 }
 
-.side-menu__content {
+.sideMenu__content {
   display: flex;
   flex-direction: column;
   gap: 38px;
@@ -74,7 +74,7 @@
   height: 100%;
 }
 
-.side-menu__back-button {
+.sideMenu__backButton {
   width: 24px;
   height: 24px;
   background: rgba(196, 140, 182, 0.8);
@@ -90,7 +90,7 @@
   top: 10px;
 }
 
-.side-menu__close-button {
+.sideMenu__closeButton {
   width: 24px;
   height: 24px;
   background: rgba(196, 140, 182, 0.8);
@@ -106,7 +106,7 @@
   top: 10px;
 }
 
-.side-menu__buttons {
+.sideMenu__buttons {
   display: flex;
   flex-direction: column;
   gap: 38px;
@@ -114,7 +114,7 @@
   width: 100%;
 }
 
-.side-menu__button {
+.sideMenu__button {
   width: 100%;
   height: 70px;
   background: var(--color-accent);
@@ -132,18 +132,18 @@
   justify-content: center;
 }
 
-.side-menu__button:hover {
+.sideMenu__button:hover {
   background: rgba(255, 235, 204, 0.9);
   transform: translateY(-1px);
   box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.3);
 }
 
-.side-menu__button:active {
+.sideMenu__button:active {
   transform: translateY(0);
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2);
 }
 
-.landing-page__footer {
+.landingPage__footer {
   position: absolute;
   top: 837px;
   left: 0;
@@ -153,7 +153,7 @@
 }
 
 /* Main Content Block */
-.landing-page__main-content {
+.landingPage__mainContent {
   position: absolute;
   top: 100px;
   width: 100%;
@@ -169,7 +169,7 @@
 }
 
 /* Hero Section Block */
-.hero-section {
+.heroSection {
   width: 400px;
   min-height: 215px;
   display: flex;
@@ -180,7 +180,7 @@
   padding: 0px 10px 0px 10px;
 }
 
-.hero-section__title {
+.heroSection__title {
   font-family: var(--font-roboto);
   font-weight: 700;
   font-size: 28px;
@@ -190,7 +190,7 @@
   max-width: 400px;
 }
 
-.hero-section__description {
+.heroSection__description {
   font-family: var(--font-roboto);
   font-weight: 500;
   font-size: 20px;
@@ -201,7 +201,7 @@
 }
 
 /* How It Works Block */
-.how-it-works {
+.howItWorks {
   width: 365px;
   min-height: 157px;
   background: var(--color-accent);
@@ -215,7 +215,7 @@
   gap: 14px;
 }
 
-.how-it-works__title {
+.howItWorks__title {
   font-family: var(--font-inter);
   font-weight: 700;
   font-size: 28px;
@@ -226,7 +226,7 @@
   margin: 0;
 }
 
-.how-it-works__subtitle {
+.howItWorks__subtitle {
   font-family: var(--font-inter);
   font-weight: 500;
   font-size: 18px;
@@ -239,7 +239,7 @@
 }
 
 /* Step Icon Block */
-.step-icon {
+.stepIcon {
   width: 71px;
   height: 71px;
   display: flex;
@@ -248,12 +248,12 @@
   margin: 0 auto;
 }
 
-.step-icon--medium {
+.stepIconMedium {
   width: 91px;
   height: 86px;
 }
 
-.step-icon--large {
+.stepIconLarge {
   width: 89px;
   height: 93px;
 }
@@ -290,7 +290,7 @@
 }
 
 /* Feature Card Block */
-.feature-card {
+.featureCard {
   width: 370px;
   min-height: 199px;
   background: var(--color-accent);
@@ -302,16 +302,16 @@
   gap: 16px;
 }
 
-.feature-card--first {
+.featureCardFirst {
   padding-top: 15px;
 }
 
-.feature-card__icon {
+.featureCard__icon {
   width: 24px;
   height: 24px;
 }
 
-.feature-card__title {
+.featureCard__title {
   font-family: var(--font-inter);
   font-weight: 600;
   font-size: 20px;
@@ -321,7 +321,7 @@
   margin: 0;
 }
 
-.feature-card__description {
+.featureCard__description {
   font-family: var(--font-inter);
   font-weight: 400;
   font-size: 16px;
@@ -333,7 +333,7 @@
 }
 
 /* CTA Section Block */
-.cta-section {
+.ctaSection {
   width: 319px;
   min-height: 253px;
   border: 1px solid var(--color-secondary);
@@ -347,7 +347,7 @@
   text-align: center;
 }
 
-.cta-section__title {
+.ctaSection__title {
   font-family: var(--font-inter);
   font-weight: 700;
   font-size: 28px;
@@ -358,7 +358,7 @@
   max-width: 233px;
 }
 
-.cta-section__description {
+.ctaSection__description {
   font-family: var(--font-inter);
   font-weight: 500;
   font-size: 18px;
@@ -370,7 +370,7 @@
 }
 
 /* CTA Button Block */
-.cta-button {
+.ctaButton {
   width: 274px;
   height: 85px;
   background: var(--color-accent);
@@ -386,12 +386,12 @@
   transition: all 0.3s ease;
 }
 
-.cta-button:hover {
+.ctaButton:hover {
   background: var(--color-secondary);
   color: var(--color-white);
   transform: scale(1.02);
 }
 
-.cta-button:active {
+.ctaButton:active {
   transform: scale(0.98);
 }

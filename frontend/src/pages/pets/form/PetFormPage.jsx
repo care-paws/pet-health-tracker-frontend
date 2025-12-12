@@ -70,7 +70,7 @@ function PetFormPage() {
       if (result.success) {
         console.log("Pet created successfully:", result.pet);
         // Navigate to a success page or pets list
-        // For now, navigate back to create-pet page
+        // For now, navigate back to create_pet page
         navigate("/create-pet");
       }
     } catch (err) {
@@ -86,13 +86,13 @@ function PetFormPage() {
   };
 
   return (
-    <div className={styles["pet-form-page"]}>
+    <div className={styles["petFormPage"]}>
       {/* Header */}
-      <header className={styles["pet-form-page__header"]}>
-        <div className={styles["pet-form-page__logo"]}>
+      <header className={styles["petFormPage__header"]}>
+        <div className={styles["petFormPage__logo"]}>
           <img src={logoUrl} alt="App logo" width={104} height={66} />
         </div>
-        <button className={styles["pet-form-page__back-button"]} onClick={handleBack} aria-label="Back">
+        <button className={styles["petFormPage__backButton"]} onClick={handleBack} aria-label="Back">
           <svg width="42" height="42" viewBox="0 0 24 24" fill="none">
             <path d="M15 18L9 12L15 6" stroke="#C48CB6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -100,25 +100,25 @@ function PetFormPage() {
       </header>
 
       {/* Hero Image with Paw Pattern */}
-      <div className={styles["pet-form-page__hero"]}>
-        <img src={pawPattern} alt="" className={styles["pet-form-page__pattern-bg"]} />
-        <img src={dogIllustration} alt="Dog and Cat" className={styles["pet-form-page__hero-image"]} />
+      <div className={styles["petFormPage__hero"]}>
+        <img src={pawPattern} alt="" className={styles["petFormPage__patternBg"]} />
+        <img src={dogIllustration} alt="Dog and Cat" className={styles["petFormPage__heroImage"]} />
       </div>
 
       {/* Main Content - Scrollable Form */}
-      <main className={styles["pet-form-page__main"]}>
-        <form className={styles["pet-form"]} onSubmit={handleSubmit}>
+      <main className={styles["petFormPage__main"]}>
+        <form className={styles["petForm"]} onSubmit={handleSubmit}>
           {/* Error Message */}
-          {error && <div className={styles["pet-form__error-message"]}>{error}</div>}
+          {error && <div className={styles["petForm__errorMessage"]}>{error}</div>}
 
           {/* Name Field */}
-          <div className={styles["pet-form__field"]}>
-            <label className={styles["pet-form__label"]}>
-              Nombre <span className={styles["pet-form__required"]}>*</span>
+          <div className={styles["petForm__field"]}>
+            <label className={styles["petForm__label"]}>
+              Nombre <span className={styles["petForm__required"]}>*</span>
             </label>
             <input
               type="text"
-              className={styles["pet-form__input"]}
+              className={styles["petForm__input"]}
               placeholder="Ej Max"
               value={formData.name}
               onChange={e => setFormData({ ...formData, name: e.target.value })}
@@ -127,13 +127,13 @@ function PetFormPage() {
           </div>
 
           {/* Birth Date Field */}
-          <div className={styles["pet-form__field"]}>
-            <label className={styles["pet-form__label"]}>
-              Fecha de nacimiento <span className={styles["pet-form__required"]}>*</span>
+          <div className={styles["petForm__field"]}>
+            <label className={styles["petForm__label"]}>
+              Fecha de nacimiento <span className={styles["petForm__required"]}>*</span>
             </label>
             <input
               type="date"
-              className={styles["pet-form__input"]}
+              className={styles["petForm__input"]}
               value={formData.birthDate}
               onChange={e => setFormData({ ...formData, birthDate: e.target.value })}
               required
@@ -141,9 +141,9 @@ function PetFormPage() {
           </div>
 
           {/* Gender Selection */}
-          <div className={styles["pet-form__field"]}>
-            <div className={styles["pet-form__gender"]}>
-              <label className={styles["pet-form__gender-option"]}>
+          <div className={styles["petForm__field"]}>
+            <div className={styles["petForm__gender"]}>
+              <label className={styles["petForm__genderOption"]}>
                 <input
                   type="radio"
                   name="gender"
@@ -153,7 +153,7 @@ function PetFormPage() {
                 />
                 <span>Hembra ♀</span>
               </label>
-              <label className={styles["pet-form__gender-option"]}>
+              <label className={styles["petForm__genderOption"]}>
                 <input
                   type="radio"
                   name="gender"
@@ -167,13 +167,13 @@ function PetFormPage() {
           </div>
 
           {/* Weight Field */}
-          <div className={styles["pet-form__field"]}>
-            <label className={styles["pet-form__label"]}>
-              El peso de tu mascotas <span className={styles["pet-form__required"]}>*</span>
+          <div className={styles["petForm__field"]}>
+            <label className={styles["petForm__label"]}>
+              El peso de tu mascotas <span className={styles["petForm__required"]}>*</span>
             </label>
             <input
               type="text"
-              className={styles["pet-form__input"]}
+              className={styles["petForm__input"]}
               placeholder="Eje 3 kilogramos"
               value={formData.weight}
               onChange={e => setFormData({ ...formData, weight: e.target.value })}
@@ -182,11 +182,11 @@ function PetFormPage() {
           </div>
 
           {/* Pet Type Field */}
-          <div className={styles["pet-form__field"]}>
-            <label className={styles["pet-form__label"]}>
-              Elige un tipo de mascota <span className={styles["pet-form__required"]}>*</span>
+          <div className={styles["petForm__field"]}>
+            <label className={styles["petForm__label"]}>
+              Elige un tipo de mascota <span className={styles["petForm__required"]}>*</span>
             </label>
-            <div className={styles["pet-types-grid"]}>
+            <div className={styles["petTypesGrid"]}>
               {[
                 { id: "turtle", name: "Tortuga", image: petTurtle },
                 { id: "hamster", name: "Cobayo", image: petHamster },
@@ -197,24 +197,24 @@ function PetFormPage() {
               ].map(pet => (
                 <div
                   key={pet.id}
-                  className={`${styles["pet-type-card"]} ${formData.petType === pet.id ? styles["pet-type-card--selected"] : ""}`}
+                  className={`${styles["petTypeCard"]} ${formData.petType === pet.id ? styles["petTypeCardselected"] : ""}`}
                   onClick={() => setFormData({ ...formData, petType: pet.id })}
                 >
-                  <div className={styles["pet-type-card__image"]}>
+                  <div className={styles["petTypeCard__image"]}>
                     <img src={pet.image} alt={pet.name} />
                   </div>
-                  <div className={styles["pet-type-card__label"]}>{pet.name}</div>
+                  <div className={styles["petTypeCard__label"]}>{pet.name}</div>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Breed Field */}
-          <div className={styles["pet-form__field"]}>
-            <label className={styles["pet-form__label"]}>Raza</label>
+          <div className={styles["petForm__field"]}>
+            <label className={styles["petForm__label"]}>Raza</label>
             <input
               type="text"
-              className={styles["pet-form__input"]}
+              className={styles["petForm__input"]}
               placeholder="Raza de tu mascota"
               value={formData.breed}
               onChange={e => setFormData({ ...formData, breed: e.target.value })}
@@ -222,11 +222,11 @@ function PetFormPage() {
           </div>
 
           {/* Color Field */}
-          <div className={styles["pet-form__field"]}>
-            <label className={styles["pet-form__label"]}>Color</label>
+          <div className={styles["petForm__field"]}>
+            <label className={styles["petForm__label"]}>Color</label>
             <input
               type="text"
-              className={styles["pet-form__input"]}
+              className={styles["petForm__input"]}
               placeholder="Color de tu mascota"
               value={formData.color}
               onChange={e => setFormData({ ...formData, color: e.target.value })}
@@ -234,30 +234,30 @@ function PetFormPage() {
           </div>
 
           {/* Photo Upload Section */}
-          <div className={styles["pet-form__field"]}>
-            <div className={styles["pet-form__upload-section"]}>
-              <h3 className={styles["pet-form__upload-title"]}>
-                Subir foto de tu mascota <span className={styles["pet-form__required"]}>*</span>
+          <div className={styles["petForm__field"]}>
+            <div className={styles["petForm__uploadSection"]}>
+              <h3 className={styles["petForm__uploadTitle"]}>
+                Subir foto de tu mascota <span className={styles["petForm__required"]}>*</span>
               </h3>
-              <p className={styles["pet-form__upload-subtitle"]}>Actualiza las fotografías de tu mascota</p>
-              <label htmlFor="photo-upload" className={styles["pet-form__upload-area"]}>
+              <p className={styles["petForm__uploadSubtitle"]}>Actualiza las fotografías de tu mascota</p>
+              <label htmlFor="photo_upload" className={styles["petForm__uploadArea"]}>
                 {formData.photo ? (
-                  <div className={styles["pet-form__photo-preview"]}>
-                    <img src={URL.createObjectURL(formData.photo)} alt="Preview" className={styles["pet-form__preview-image"]} />
-                    <p className={styles["pet-form__photo-name"]}>{formData.photo.name}</p>
+                  <div className={styles["petForm__photoPreview"]}>
+                    <img src={URL.createObjectURL(formData.photo)} alt="Preview" className={styles["petForm__previewImage"]} />
+                    <p className={styles["petForm__photoName"]}>{formData.photo.name}</p>
                   </div>
                 ) : (
                   <>
                     <p>Haz clic o arrastra una imagen aquí</p>
-                    <p className={styles["pet-form__upload-info"]}>PNG, JPG O WEBP (máx. 10MB)</p>
+                    <p className={styles["petForm__uploadInfo"]}>PNG, JPG O WEBP (máx. 10MB)</p>
                   </>
                 )}
               </label>
               <input
-                id="photo-upload"
+                id="photo_upload"
                 type="file"
                 accept="image/jpeg,image/jpg,image/png,image/gif,image/webp"
-                className={styles["pet-form__file-input"]}
+                className={styles["petForm__fileInput"]}
                 onChange={e => {
                   const file = e.target.files?.[0];
                   if (file) {
@@ -276,11 +276,11 @@ function PetFormPage() {
           </div>
 
           {/* Action Buttons */}
-          <div className={styles["pet-form__actions"]}>
-            <button type="button" className={styles["pet-form__cancel-button"]} onClick={handleCancel} disabled={loading}>
+          <div className={styles["petForm__actions"]}>
+            <button type="button" className={styles["petForm__cancelButton"]} onClick={handleCancel} disabled={loading}>
               Cancelar
             </button>
-            <button type="submit" className={styles["pet-form__save-button"]} disabled={loading}>
+            <button type="submit" className={styles["petForm__saveButton"]} disabled={loading}>
               {loading ? "Guardando..." : "💾 Guardar"}
             </button>
           </div>
@@ -288,7 +288,7 @@ function PetFormPage() {
       </main>
 
       {/* Footer Navigation Bar */}
-      <footer className={styles["pet-form-page__footer"]}></footer>
+      <footer className={styles["petFormPage__footer"]}></footer>
     </div>
   );
 }

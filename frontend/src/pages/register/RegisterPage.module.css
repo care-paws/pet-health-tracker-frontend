@@ -1,5 +1,5 @@
 /* Register Page Block */
-.register-page {
+.registerPage {
   position: relative;
   width: 412px;
   height: 917px;
@@ -9,7 +9,7 @@
 }
 
 /* Header Block */
-.register-page__header {
+.registerPage__header {
   position: absolute;
   top: 0;
   left: 0;
@@ -23,12 +23,12 @@
   box-sizing: border-box;
 }
 
-.register-page__logo {
+.registerPage__logo {
   width: 110px;
   height: 70px;
 }
 
-.register-page__back-button {
+.registerPage__backButton {
   width: 42px;
   height: 42px;
   background: transparent;
@@ -41,7 +41,7 @@
 }
 
 /* Footer Block */
-.register-page__footer {
+.registerPage__footer {
   position: absolute;
   top: 837px;
   left: 0;
@@ -51,7 +51,7 @@
 }
 
 /* Main Content Block */
-.register-page__main {
+.registerPage__main {
   position: absolute;
   top: 100px;
   left: 0;
@@ -62,7 +62,7 @@
   align-items: center;
 }
 
-.register-page__logo-large {
+.registerPage__logoLarge {
   position: absolute;
   top: -15px;
   left: 61px;
@@ -73,13 +73,13 @@
   justify-content: center;
 }
 
-.register-page__logo-large img {
+.registerPage__logoLarge img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-.register-page__title {
+.registerPage__title {
   position: absolute;
   top: 218px;
   left: 50%;
@@ -94,7 +94,7 @@
 }
 
 /* Register Form Block */
-.register-form {
+.registerForm {
   position: absolute;
   top: 318px;
   left: 56px;
@@ -103,7 +103,7 @@
   width: 300px;
 }
 
-.register-form__error {
+.registerForm__error {
   background: rgba(254, 57, 57, 0.1);
   border: 1px solid #fe3939;
   border-radius: 10px;
@@ -115,17 +115,17 @@
   margin-bottom: 20px;
 }
 
-.register-form__field {
+.registerForm__field {
   display: flex;
   flex-direction: column;
   margin-bottom: 50px;
 }
 
-.register-form__field:first-child {
+.registerForm__field:first-child {
   margin-bottom: 50px;
 }
 
-.register-form__label {
+.registerForm__label {
   font-family: var(--font-roboto);
   font-weight: 500;
   font-size: 18px;
@@ -135,7 +135,7 @@
 }
 
 /* Select Field */
-.register-form__select-wrapper {
+.registerForm__selectWrapper {
   position: relative;
   background: var(--color-accent);
   border-radius: 10px;
@@ -144,7 +144,7 @@
   box-sizing: border-box;
 }
 
-.register-form__select {
+.registerForm__select {
   width: 100%;
   height: 100%;
   background: transparent;
@@ -165,13 +165,13 @@
   padding-right: 40px;
 }
 
-.register-form__select option {
+.registerForm__select option {
   background: var(--color-accent);
   color: var(--color-text);
 }
 
 /* Input Wrapper */
-.register-form__input-wrapper {
+.registerForm__inputWrapper {
   position: relative;
   display: flex;
   align-items: center;
@@ -182,7 +182,7 @@
   box-sizing: border-box;
 }
 
-.register-form__icon {
+.registerForm__icon {
   width: 40px;
   height: 40px;
   display: flex;
@@ -192,7 +192,7 @@
   margin-right: 17px;
 }
 
-.register-form__input {
+.registerForm__input {
   flex: 1;
   background: transparent;
   border: none;
@@ -207,13 +207,13 @@
   padding-bottom: 5px;
 }
 
-.register-form__input::placeholder {
+.registerForm__input::placeholder {
   color: var(--color-text);
   opacity: 0.8;
 }
 
 /* Password Field */
-.register-form__password-wrapper {
+.registerForm__passwordWrapper {
   position: relative;
   display: flex;
   align-items: center;
@@ -224,7 +224,7 @@
   box-sizing: border-box;
 }
 
-.register-form__password-icon {
+.registerForm__passwordIcon {
   width: 40px;
   height: 40px;
   display: flex;
@@ -235,13 +235,13 @@
   opacity: 0.5;
 }
 
-.register-form__password-input {
+.registerForm__passwordInput {
   flex: 1;
   background: transparent;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   outline: none;
-  font-family: 'Markazi Text', serif;
+  font-family: "Markazi Text", serif;
   font-weight: 400;
   font-size: 24px;
   line-height: normal;
@@ -250,7 +250,7 @@
   padding-bottom: 5px;
 }
 
-.register-form__password-input::placeholder {
+.registerForm__passwordInput::placeholder {
   font-family: var(--font-roboto);
   font-size: 14px;
   color: var(--color-text);
@@ -258,7 +258,7 @@
 }
 
 /* Submit Button */
-.register-form__submit-button {
+.registerForm__submitButton {
   width: 120px;
   height: 47px;
   background: var(--color-accent);
@@ -275,18 +275,17 @@
   transition: all 0.2s ease;
 }
 
-.register-form__submit-button:hover {
+.registerForm__submitButton:hover {
   transform: translateY(-1px);
   box-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.register-form__submit-button:active {
+.registerForm__submitButton:active {
   transform: translateY(0);
   box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.2);
 }
 
-.register-form__submit-button:disabled {
+.registerForm__submitButton:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
-

@@ -36,13 +36,13 @@ function LoginPage() {
   };
 
   return (
-    <div className={styles["login-page"]}>
+    <div className={styles["loginPage"]}>
       {/* Header */}
-      <header className={styles["login-page__header"]}>
-        <div className={styles["login-page__logo"]}>
+      <header className={styles["loginPage__header"]}>
+        <div className={styles["loginPage__logo"]}>
           <img src={logoUrl} alt="App logo" width={110} height={70} />
         </div>
-        <button className={styles["login-page__back-button"]} onClick={handleBack} aria-label="Back">
+        <button className={styles["loginPage__backButton"]} onClick={handleBack} aria-label="Back">
           <svg width="42" height="42" viewBox="0 0 24 24" fill="none">
             <path d="M15 18L9 12L15 6" stroke="#C48CB6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -50,21 +50,21 @@ function LoginPage() {
       </header>
 
       {/* Main Content */}
-      <main className={styles["login-page__main"]}>
-        <h1 className={styles["login-page__title"]}>Inicia sesión</h1>
-        <p className={styles["login-page__subtitle"]}>Ingresa a tu cuenta de Pet Care Paws</p>
+      <main className={styles["loginPage__main"]}>
+        <h1 className={styles["loginPage__title"]}>Inicia sesión</h1>
+        <p className={styles["loginPage__subtitle"]}>Ingresa a tu cuenta de Pet Care Paws</p>
 
-        <form className={styles["login-form"]} onSubmit={handleSubmit}>
+        <form className={styles["loginForm"]} onSubmit={handleSubmit}>
           {/* Error Message */}
-          {error && <div className={styles["login-form__error"]}>{error}</div>}
+          {error && <div className={styles["loginForm__error"]}>{error}</div>}
 
           {/* Email Field */}
-          <div className={styles["login-form__field"]}>
-            <label className={styles["login-form__label"]} htmlFor="email">
+          <div className={styles["loginForm__field"]}>
+            <label className={styles["loginForm__label"]} htmlFor="email">
               Email
             </label>
-            <div className={styles["login-form__input-wrapper"]}>
-              <div className={styles["login-form__icon"]}>
+            <div className={styles["loginForm__inputWrapper"]}>
+              <div className={styles["loginForm__icon"]}>
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"
@@ -79,7 +79,7 @@ function LoginPage() {
               <input
                 type="email"
                 id="email"
-                className={styles["login-form__input"]}
+                className={styles["loginForm__input"]}
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 placeholder="tucorreo@ejemplo.com"
@@ -89,12 +89,12 @@ function LoginPage() {
           </div>
 
           {/* Password Field */}
-          <div className={styles["login-form__field"]}>
-            <label className={styles["login-form__label"]} htmlFor="password">
+          <div className={styles["loginForm__field"]}>
+            <label className={styles["loginForm__label"]} htmlFor="password">
               Contraseña
             </label>
-            <div className={styles["login-form__password-wrapper"]}>
-              <div className={styles["login-form__password-icon"]}>
+            <div className={styles["loginForm__passwordWrapper"]}>
+              <div className={styles["loginForm__passwordIcon"]}>
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
                   <rect x="3" y="11" width="18" height="11" rx="2" fill="#000000" />
                   <path d="M7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11" stroke="#000000" strokeWidth="2" strokeLinecap="round" />
@@ -103,7 +103,7 @@ function LoginPage() {
               <input
                 type="password"
                 id="password"
-                className={styles["login-form__password-input"]}
+                className={styles["loginForm__passwordInput"]}
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 placeholder="Ingresa tu contraseña"
@@ -113,22 +113,22 @@ function LoginPage() {
           </div>
 
           {/* Login Button */}
-          <button type="submit" className={styles["login-form__submit-button"]} disabled={loading}>
+          <button type="submit" className={styles["loginForm__submitButton"]} disabled={loading}>
             {loading ? "Iniciando sesión..." : "Iniciar sesión"}
           </button>
 
           {/* Forgot Password Link */}
-          <p className={styles["login-form__forgot-password"]}>¿has olvidado tu contraseña ?</p>
+          <p className={styles["loginForm__forgotPassword"]}>¿has olvidado tu contraseña ?</p>
 
           {/* Register Button */}
-          <button type="button" className={styles["login-form__register-button"]} onClick={() => navigate("/register")}>
+          <button type="button" className={styles["loginForm__registerButton"]} onClick={() => navigate("/register")}>
             Registrarse
           </button>
         </form>
       </main>
 
       {/* Footer Navigation Bar */}
-      <footer className={styles["login-page__footer"]}></footer>
+      <footer className={styles["loginPage__footer"]}></footer>
     </div>
   );
 }
