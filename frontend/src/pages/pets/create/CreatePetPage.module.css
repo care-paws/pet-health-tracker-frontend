@@ -19,7 +19,7 @@
 
 .createPetPage__main {
   flex: 1;
-  padding: 12px 24px 120px;
+  /* padding: 12px 24px 20px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,6 +45,12 @@
   max-width: 260px;
 }
 
+.createPetContainer__text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .createPetContainer__text p {
   font-family: var(--font-roboto);
   font-weight: 500;
@@ -52,6 +58,34 @@
   line-height: 22px;
   color: rgba(0, 0, 0, 0.85);
   margin: 0;
+}
+
+.featureList {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-roboto);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.featureItem__icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
 }
 
 .createPetContainer__button {
