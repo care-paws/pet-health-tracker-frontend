@@ -16,7 +16,7 @@
 - 🔵 **POST /api/pets** - Crear una nueva mascota
 - 🟢 **GET /api/pets** - Listar todas las mascotas del usuario
 - 🟢 **GET /api/pets/:id** - Obtener mascota específica por ID
-- 🟠 **PUT /api/pets** - Actualizar información de mascota
+- 🟠 **PUT /api/pets/:id** - Actualizar información de mascota
 - 🔴 **DELETE /api/pets/:id** - Eliminar mascota por ID
 
 ### Eventos
@@ -534,13 +534,25 @@ Content-Disposition: form-data; name="breed"
 
 Labrador
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="gender"
+
+male
+------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="age"
 
-3
+2024-12-12T10:00:00Z
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="weight"
 
 25.5
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="weighedAt"
+
+2024-12-12T09:00:00Z
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="notes"
+
+Vacunado hace 1 mes
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="photoUrl"; filename="firulais.jpg"
 Content-Type: image/jpeg
@@ -551,11 +563,14 @@ Content-Type: image/jpeg
 
 **Campos del Request:**
 
-- `name` (string, requerido): Nombre de la mascota
+- `name` (string, requerido): Nombre de la mascota (solo letras y espacios, mínimo 3 caracteres)
 - `species` (string, requerido): Especie (ej: "Perro", "Gato")
 - `breed` (string, requerido): Raza
-- `age` (number, requerido): Edad en años
-- `weight` (number, requerido): Peso en kilogramos
+- `gender` (string, requerido): male | female
+- `age` (string ISO datetime, requerido): Fecha de nacimiento en formato ISO 8601
+- `weight` (number, requerido): Peso en kilogramos (debe ser positivo)
+- `weighedAt` (string ISO datetime, opcional): Fecha del último pesaje
+- `notes` (string, opcional): Notas adicionales
 - `photoUrl` (file, requerido): Archivo de imagen (JPEG, PNG, GIF, WebP)
 
 **Responses:**
@@ -576,8 +591,11 @@ Content-Type: application/json
     "name": "Firulais",
     "species": "Perro",
     "breed": "Labrador",
-    "age": 3,
+    "gender": "male",
+    "age": "2024-12-12T10:00:00.000Z",
     "weight": 25.5,
+    "weighedAt": "2024-12-12T09:00:00.000Z",
+    "notes": "Vacunado hace 1 mes",
     "photoUrl": "https://res.cloudinary.com/demo/image/upload/v1733924400/pets/firulais_abc123.jpg",
     "createdAt": "2025-12-11T10:00:00.000Z",
     "updatedAt": "2025-12-11T10:00:00.000Z"
@@ -600,7 +618,7 @@ Content-Type: application/json
   "errors": {
     "formErrors": [],
     "fieldErrors": {
-      "age": ["Expected number, received string"]
+      "age": ["Invalid datetime"]
     }
   }
 }
@@ -615,7 +633,7 @@ o si faltan múltiples campos:
     "fieldErrors": {
       "name": ["Invalid input: expected string, received undefined"],
       "species": ["Invalid input: expected string, received undefined"],
-      "age": ["Expected number, received string"]
+      "age": ["Invalid datetime"]
     }
   }
 }
@@ -705,8 +723,11 @@ Content-Type: application/json
       "name": "Firulais",
       "species": "Perro",
       "breed": "Labrador",
-      "age": 3,
+      "gender": "male",
+      "age": "2024-12-12T10:00:00.000Z",
       "weight": 25.5,
+      "weighedAt": "2024-12-12T09:00:00.000Z",
+      "notes": "Vacunado hace 1 mes",
       "photoUrl": "https://res.cloudinary.com/demo/image/upload/v1733924400/pets/firulais_abc123.jpg",
       "createdAt": "2025-12-11T10:00:00.000Z",
       "updatedAt": "2025-12-11T10:00:00.000Z"
@@ -717,8 +738,11 @@ Content-Type: application/json
       "name": "Michi",
       "species": "Gato",
       "breed": "Siamés",
-      "age": 2,
+      "gender": "female",
+      "age": "2023-06-15T10:00:00.000Z",
       "weight": 4.5,
+      "weighedAt": "2025-12-10T15:00:00.000Z",
+      "notes": null,
       "photoUrl": "https://res.cloudinary.com/demo/image/upload/v1733837800/pets/michi_def456.jpg",
       "createdAt": "2025-12-10T15:30:00.000Z",
       "updatedAt": "2025-12-10T15:30:00.000Z"
@@ -734,8 +758,11 @@ Content-Type: application/json
 - `name` (string): Nombre de la mascota
 - `species` (string): Especie
 - `breed` (string): Raza
-- `age` (number): Edad en años
+- `gender` (string): Género (male | female)
+- `age` (string): Fecha de nacimiento en formato ISO 8601
 - `weight` (number): Peso en kilogramos
+- `weighedAt` (string | null): Fecha del último pesaje en formato ISO 8601 (puede ser null)
+- `notes` (string | null): Notas adicionales (puede ser null)
 - `photoUrl` (string): URL de la foto en Cloudinary
 - `createdAt` (string): Fecha de creación ISO 8601
 - `updatedAt` (string): Fecha de última actualización ISO 8601
@@ -811,8 +838,11 @@ Content-Type: application/json
     "name": "Firulais",
     "species": "Perro",
     "breed": "Labrador",
-    "age": 3,
+    "gender": "male",
+    "age": "2024-12-12T10:00:00.000Z",
     "weight": 25.5,
+    "weighedAt": "2024-12-12T09:00:00.000Z",
+    "notes": "Vacunado hace 1 mes",
     "photoUrl": "https://res.cloudinary.com/demo/image/upload/v1733924400/pets/firulais_abc123.jpg",
     "createdAt": "2025-12-11T10:00:00.000Z",
     "updatedAt": "2025-12-11T10:00:00.000Z"
@@ -854,9 +884,13 @@ Content-Type: application/json
 
 ---
 
-#### 🟠 PUT /api/pets
+#### 🟠 PUT /api/pets/:id
 
 **Descripción:** Actualiza la información de una mascota existente.
+
+**Parámetros de URL:**
+
+- `id` (string, requerido): UUID de la mascota a actualizar
 
 **Request Headers:**
 
@@ -865,10 +899,6 @@ Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0g
 Accept: application/json
 Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
-
-**Query Parameters:**
-
-- `id` (string, requerido): UUID de la mascota a actualizar
 
 **Request Body (multipart/form-data):**
 
@@ -886,9 +916,21 @@ Content-Disposition: form-data; name="breed"
 
 Labrador Retriever
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="gender"
+
+male
+------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="age"
 
-4
+2024-12-12T10:00:00Z
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="weighedAt"
+
+2024-12-12T09:00:00Z
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="notes"
+
+Notas actualizadas
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="weight"
 
@@ -903,17 +945,20 @@ Content-Type: image/jpeg
 
 **Campos del Request:**
 
-- `name` (string, requerido): Nombre actualizado
+- `name` (string, requerido): Nombre actualizado (solo letras y espacios, mínimo 3 caracteres)
 - `species` (string, requerido): Especie actualizada
 - `breed` (string, requerido): Raza actualizada
-- `age` (number, requerido): Edad actualizada
-- `weight` (number, requerido): Peso actualizado
+- `gender` (string, requerido): male | female
+- `age` (string ISO datetime, requerido): Edad actualizada en formato ISO 8601
+- `weight` (number, requerido): Peso actualizado en kilogramos
+- `weighedAt` (string ISO datetime, opcional): Fecha del último pesaje
+- `notes` (string, opcional): Notas adicionales
 - `photoUrl` (file, opcional): Nueva imagen
 
 **Ejemplo de Request:**
 
 ```
-PUT /api/pets?id=a3f5b2c1-9d8e-4f6a-b7c3-1e2d3f4a5b6c
+PUT /api/pets/a3f5b2c1-9d8e-4f6a-b7c3-1e2d3f4a5b6c
 ```
 
 **Responses:**
@@ -934,8 +979,11 @@ Content-Type: application/json
     "name": "Firulais Actualizado",
     "species": "Perro",
     "breed": "Labrador Retriever",
-    "age": 4,
+    "gender": "male",
+    "age": "2024-12-12T10:00:00.000Z",
     "weight": 26.0,
+    "weighedAt": "2024-12-12T09:00:00.000Z",
+    "notes": "Notas actualizadas",
     "photoUrl": "https://res.cloudinary.com/demo/image/upload/v1733931600/pets/firulais_nuevo_xyz789.jpg",
     "createdAt": "2025-12-11T10:00:00.000Z",
     "updatedAt": "2025-12-11T12:00:00.000Z"
@@ -999,9 +1047,10 @@ o
 **Notas:**
 
 - Si se proporciona nueva imagen, se sube a Cloudinary y reemplaza la anterior
-- Todos los campos son requeridos en el body
-- El ID se pasa como query parameter
+- Todos los campos excepto `weighedAt`, `notes` y `photoUrl` son requeridos en el body
+- El ID se pasa como parámetro de ruta (path parameter)
 - Rate limiting aplicado
+- Si no se proporciona `photoUrl`, se mantiene la imagen anterior
 
 ---
 
@@ -1050,8 +1099,11 @@ Content-Type: application/json
     "name": "Firulais",
     "species": "Perro",
     "breed": "Labrador",
-    "age": 3,
+    "gender": "male",
+    "age": "2024-12-12T10:00:00.000Z",
     "weight": 25.5,
+    "weighedAt": "2024-12-12T09:00:00.000Z",
+    "notes": "Vacunado hace 1 mes",
     "photoUrl": "https://res.cloudinary.com/demo/image/upload/v1733924400/pets/firulais_abc123.jpg",
     "createdAt": "2025-12-11T10:00:00.000Z",
     "updatedAt": "2025-12-11T10:00:00.000Z"
@@ -1479,7 +1531,7 @@ Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 {
   "eventId": "c5d7e9f1-3a5b-7c9d-1e3f-5a7b9c1d3e5f",
   "triggerTime": "2025-12-14T14:30:00.000Z",
-  "message": "No olvides llevar a Firulais al veterinario mañana",
+  "description": "No olvides llevar a Firulais al veterinario mañana",
   "eventUrl": "https://app.ejemplo.com/events/c5d7e9f1-3a5b-7c9d-1e3f-5a7b9c1d3e5f"
 }
 ```
@@ -1488,7 +1540,7 @@ Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 - `eventId` (string, requerido): UUID del evento
 - `triggerTime` (string, requerido): Fecha y hora para enviar el recordatorio (formato ISO 8601)
-- `message` (string, opcional): Mensaje personalizado del recordatorio
+- `description` (string, opcional): Descripción personalizada del recordatorio
 - `eventUrl` (string, opcional): URL del evento en la aplicación
 
 **Responses:**
@@ -1505,6 +1557,7 @@ Content-Type: application/json
   "id": "f8a0b2c4-6d8e-0a2c-4e6a-8c0d2e4f6a8b",
   "eventId": "c5d7e9f1-3a5b-7c9d-1e3f-5a7b9c1d3e5f",
   "triggerTime": "2025-12-14T14:30:00.000Z",
+  "description": "No olvides llevar a Firulais al veterinario mañana",
   "status": "PENDING",
   "createdAt": "2025-12-11T10:00:00.000Z",
   "updatedAt": "2025-12-11T10:00:00.000Z",
@@ -1526,7 +1579,8 @@ Content-Type: application/json
 - `id` (string): UUID del recordatorio
 - `eventId` (string): UUID del evento asociado
 - `triggerTime` (string): Fecha/hora programada para el recordatorio
-- `status` (string): Estado del recordatorio (PENDING | SENT | FAILED)
+- `description` (string | null): Descripción personalizada del recordatorio
+- `status` (string): Estado del recordatorio (PENDING | SENT)
 - `createdAt` (string): Fecha de creación
 - `updatedAt` (string): Fecha de última actualización
 - `event` (object): Objeto completo del evento asociado
@@ -1539,19 +1593,6 @@ Content-Type: application/json
     "formErrors": [],
     "fieldErrors": {
       "eventId": ["Invalid input: expected string, received undefined"]
-    }
-  }
-}
-```
-
-o si está vacío:
-
-```json
-{
-  "errors": {
-    "formErrors": [],
-    "fieldErrors": {
-      "eventId": ["String must contain at least 1 character(s)"]
     }
   }
 }
@@ -1581,14 +1622,6 @@ o múltiples errores (campos faltantes):
       "triggerTime": ["Invalid input: expected string, received undefined"]
     }
   }
-}
-```
-
-**❌ 400 Bad Request** - triggerTime en el pasado
-
-```json
-{
-  "message": "triggerTime must be in the future"
 }
 ```
 
@@ -1624,7 +1657,7 @@ o múltiples errores (campos faltantes):
   - `VET_VISIT`: "Recordatorio de visita veterinaria"
   - `FEEDING`: "Recordatorio de alimentación"
   - `VACCINE`: "Recordatorio de vacunación"
-- El email contiene: mensaje personalizado, fecha del evento, y URL del evento (si se proporcionó)
+- El email contiene: descripción personalizada, fecha del evento, y URL del evento (si se proporcionó)
 
 ---
 
@@ -1670,6 +1703,7 @@ Content-Type: application/json
     "id": "f8a0b2c4-6d8e-0a2c-4e6a-8c0d2e4f6a8b",
     "eventId": "c5d7e9f1-3a5b-7c9d-1e3f-5a7b9c1d3e5f",
     "triggerTime": "2025-12-14T14:30:00.000Z",
+    "description": "No olvides la cita veterinaria",
     "status": "PENDING",
     "createdAt": "2025-12-11T10:00:00.000Z",
     "updatedAt": "2025-12-11T10:00:00.000Z"
@@ -1678,17 +1712,10 @@ Content-Type: application/json
     "id": "a1b3c5d7-9e1f-3a5b-7c9d-1e3f5a7b9c1d",
     "eventId": "c5d7e9f1-3a5b-7c9d-1e3f-5a7b9c1d3e5f",
     "triggerTime": "2025-12-13T09:00:00.000Z",
+    "description": null,
     "status": "SENT",
     "createdAt": "2025-12-10T15:00:00.000Z",
     "updatedAt": "2025-12-13T09:00:05.000Z"
-  },
-  {
-    "id": "b2c4d6e8-0f2a-4b6c-8d0e-2f4a6b8c0d2e",
-    "eventId": "c5d7e9f1-3a5b-7c9d-1e3f-5a7b9c1d3e5f",
-    "triggerTime": "2025-12-12T20:00:00.000Z",
-    "status": "FAILED",
-    "createdAt": "2025-12-10T10:00:00.000Z",
-    "updatedAt": "2025-12-12T20:00:10.000Z"
   }
 ]
 ```
@@ -1698,10 +1725,10 @@ Content-Type: application/json
 - `id` (string): UUID del recordatorio
 - `eventId` (string): UUID del evento
 - `triggerTime` (string): Fecha/hora programada ISO 8601
+- `description` (string | null): Descripción personalizada del recordatorio (puede ser null)
 - `status` (string): Estado del recordatorio
   - `PENDING`: Pendiente de envío
   - `SENT`: Enviado exitosamente
-  - `FAILED`: Falló el envío
 - `createdAt` (string): Fecha de creación
 - `updatedAt` (string): Fecha de última actualización
 
@@ -1718,14 +1745,6 @@ Content-Type: application/json
 ```json
 {
   "message": "eventId is required"
-}
-```
-
-**❌ 400 Bad Request** - eventId inválido (formato incorrecto)
-
-```json
-{
-  "message": "Invalid UUID format"
 }
 ```
 
@@ -1807,19 +1826,19 @@ Content-Type: application/json
 }
 ```
 
+**❌ 400 Bad Request** - id es requerido
+
+```json
+{
+  "message": "id is required"
+}
+```
+
 **❌ 404 Not Found** - Recordatorio no encontrado
 
 ```json
 {
   "message": "Reminder not found"
-}
-```
-
-**❌ 500 Internal Server Error** - Error al eliminar
-
-```json
-{
-  "message": "Error deleting reminder"
 }
 ```
 
@@ -1880,14 +1899,6 @@ Content-Type: application/json
 }
 ```
 
-**❌ 400 Bad Request** - UUID inválido
-
-```json
-{
-  "message": "Invalid UUID format"
-}
-```
-
 **❌ 401 Unauthorized** - No autenticado
 
 ```json
@@ -1896,19 +1907,11 @@ Content-Type: application/json
 }
 ```
 
-**❌ 404 Not Found** - Evento no encontrado
+**❌ 400 Bad Request** - eventId es requerido
 
 ```json
 {
-  "message": "Event not found"
-}
-```
-
-**❌ 500 Internal Server Error** - Error al eliminar
-
-```json
-{
-  "message": "Error deleting event reminders"
+  "message": "eventId is required"
 }
 ```
 
@@ -2518,8 +2521,11 @@ Cookie: token=<jwt-token>
 name=Firulais
 species=Perro
 breed=Labrador
-age=3
+gender=male
+age=2024-12-12T10:00:00Z
 weight=25.5
+weighedAt=2024-12-12T09:00:00Z
+notes=Vacunado hace 1 mes
 photoUrl=<archivo-imagen.jpg>
 
 # Respuesta: 201 Created con datos de la mascota y URL de Cloudinary
@@ -2621,15 +2627,18 @@ Content-Type: application/json
 ### 8. Actualizar información de mascota
 
 ```bash
-PUT /api/pets?id=a3f5b2c1-9d8e-4f6a-b7c3-1e2d3f4a5b6c
+PUT /api/pets/a3f5b2c1-9d8e-4f6a-b7c3-1e2d3f4a5b6c
 Content-Type: multipart/form-data
 Cookie: token=<jwt-token>
 
 name=Firulais Senior
 species=Perro
 breed=Labrador
-age=4
+gender=male
+age=2024-12-12T10:00:00Z
 weight=26.0
+weighedAt=2024-12-12T09:00:00Z
+notes=Notas actualizadas
 photoUrl=<nueva-imagen.jpg>
 
 # Respuesta: 200 OK con datos actualizados
