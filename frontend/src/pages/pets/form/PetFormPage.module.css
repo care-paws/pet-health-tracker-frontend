@@ -20,7 +20,7 @@
 
 .petFormPage__hero {
   width: 100%;
-  padding: 8px 24px 0;
+  /* padding: 8px 24px 0; */
   box-sizing: border-box;
 }
 
@@ -29,7 +29,7 @@
   height: 240px;
   border-radius: 10px;
   background-size: cover;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-position: center;
   overflow: hidden;
 }
@@ -39,7 +39,7 @@
   width: 230px;
   height: 200px;
   object-fit: contain;
-  margin: -70px auto 0 auto;
+  margin: -200px auto 0 auto;
 }
 
 .petFormPage__main {

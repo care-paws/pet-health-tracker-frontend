@@ -9,7 +9,7 @@ import {
   weightButtonIcon,
   weightIcon,
 } from "@/assets/icons/icons";
-import { pawPattern } from "@/assets/images/images";
+import { backgroundPet, dogIllustration } from "@/assets/images/images";
 import logoUrl from "@/assets/logo.svg";
 import AppFooter from "@/components/AppFooter";
 import AppHeader from "@/components/AppHeader";
@@ -145,14 +145,14 @@ function PetListPage() {
           pets.map(pet => (
             <div key={pet.id} className={styles["petCard"]}>
               <div className={styles["petCard__imageWrapper"]}>
-                <div className={styles["petCard__background"]} style={{ backgroundImage: `url(${pawPattern})` }} />
+                <div className={styles["petCard__background"]} style={{ backgroundImage: `url(${backgroundPet})` }} />
                 <div className={styles["petCard__photoCircle"]}>
                   <img
                     src={pet.photoUrl}
                     alt={pet.name}
                     className={styles["petCard__photo"]}
                     onError={e => {
-                      e.target.src = pawPattern; // Fallback image
+                      e.target.src = dogIllustration; // Fallback image
                     }}
                   />
                 </div>
