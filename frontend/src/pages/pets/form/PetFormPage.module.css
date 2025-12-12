@@ -113,7 +113,7 @@
   font-family: var(--font-roboto);
   font-weight: 600;
   font-size: 16px;
-  color: rgba(130, 130, 130, 0.9);
+  color: rgb(55, 55, 55);
 }
 
 .petForm__input::placeholder {
