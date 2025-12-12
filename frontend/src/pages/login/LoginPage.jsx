@@ -1,3 +1,4 @@
+import logoUrl from "@/assets/logo.svg";
 import AppFooter from "@/components/AppFooter";
 import AppHeader from "@/components/AppHeader";
 import PageLayout from "@/layouts/PageLayout";
@@ -37,12 +38,25 @@ function LoginPage() {
     navigate("/");
   };
 
-  const header = <AppHeader showBackButton={true} onBackClick={handleBack} showMenuButton={false} />;
+  const header = (
+    <div className={styles["loginPage__headerWrap"]}>
+      <AppHeader
+        className={styles["loginPage__header"]}
+        showBackButton={true}
+        backPosition="right"
+        centerAlign="start"
+        onBackClick={handleBack}
+        showMenuButton={false}
+      >
+        <img src={logoUrl} alt="App logo" width={110} height={70} />
+      </AppHeader>
+    </div>
+  );
 
   const footer = <AppFooter />;
 
   return (
-    <PageLayout header={header} footer={footer}>
+    <PageLayout className={styles["loginPage"]} header={header} footer={footer}>
       {/* Main Content */}
       <main className={styles["loginPage__main"]}>
         <h1 className={styles["loginPage__title"]}>Inicia sesión</h1>

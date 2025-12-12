@@ -1,106 +1,62 @@
-/* Register Page Block */
+/* Register Page mobile-first 412x917 */
 .registerPage {
-  position: relative;
-  width: 412px;
-  height: 917px;
+  width: 100%;
+  max-width: 412px;
+  min-height: 100vh;
   background: var(--color-primary);
-  overflow: hidden;
   margin: 0 auto;
-}
-
-/* Header Block */
-.registerPage__header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 412px;
-  height: 100px;
-  background: rgba(196, 140, 182, 0.8);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  box-sizing: border-box;
+  flex-direction: column;
 }
 
-.registerPage__logo {
-  width: 110px;
-  height: 70px;
-}
-
-.registerPage__backButton {
-  width: 42px;
-  height: 42px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Footer Block */
-.registerPage__footer {
-  position: absolute;
-  top: 837px;
-  left: 0;
-  width: 412px;
-  height: 80px;
+.registerPage__headerWrap {
   background: var(--color-secondary);
+  padding: 20px 24px;
 }
 
-/* Main Content Block */
+.registerPage__header {
+  color: var(--color-white);
+}
+
 .registerPage__main {
-  position: absolute;
-  top: 100px;
-  left: 0;
-  width: 412px;
-  height: 737px;
+  flex: 1;
+  padding: 20px 24px 140px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 16px;
 }
 
 .registerPage__logoLarge {
-  position: absolute;
-  top: -15px;
-  left: 61px;
-  width: 339px;
-  height: 204px;
+  width: 260px;
+  max-width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .registerPage__logoLarge img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: contain;
 }
 
 .registerPage__title {
-  position: absolute;
-  top: 218px;
-  left: 50%;
-  transform: translateX(-50%);
   font-family: var(--font-roboto);
-  font-weight: 500;
-  font-size: 32px;
-  line-height: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 34px;
   color: var(--color-secondary);
   text-align: center;
-  margin: 0;
+  margin: 8px 0 0 0;
 }
 
-/* Register Form Block */
 .registerForm {
-  position: absolute;
-  top: 318px;
-  left: 56px;
   display: flex;
   flex-direction: column;
-  width: 300px;
+  gap: 20px;
+  width: 100%;
+  max-width: 320px;
 }
 
 .registerForm__error {
@@ -112,118 +68,75 @@
   font-size: 14px;
   color: #fe3939;
   text-align: center;
-  margin-bottom: 20px;
 }
 
 .registerForm__field {
   display: flex;
   flex-direction: column;
-  margin-bottom: 50px;
-}
-
-.registerForm__field:first-child {
-  margin-bottom: 50px;
+  gap: 10px;
 }
 
 .registerForm__label {
   font-family: var(--font-roboto);
-  font-weight: 500;
-  font-size: 18px;
-  line-height: normal;
-  color: rgba(0, 0, 0, 0.8);
-  margin: 0 0 0 0;
+  font-weight: 600;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.85);
+  margin: 0;
 }
 
-/* Select Field */
-.registerForm__selectWrapper {
-  position: relative;
-  background: var(--color-accent);
-  border-radius: 10px;
-  height: 51px;
-  width: 300px;
-  box-sizing: border-box;
-}
-
-.registerForm__select {
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  border: none;
-  outline: none;
-  font-family: var(--font-roboto);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: normal;
-  color: rgba(0, 0, 0, 0.6);
-  padding: 5px 10px;
-  box-sizing: border-box;
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 20px center;
-  padding-right: 40px;
-}
-
-.registerForm__select option {
-  background: var(--color-accent);
-  color: var(--color-text);
-}
-
-/* Input Wrapper */
-.registerForm__inputWrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  background: var(--color-accent);
-  border-radius: 10px;
-  height: 50px;
-  padding: 0 10px;
-  box-sizing: border-box;
-}
-
-.registerForm__icon {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-right: 17px;
-}
-
-.registerForm__input {
-  flex: 1;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  outline: none;
-  font-family: var(--font-roboto);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: normal;
-  color: var(--color-text);
-  opacity: 0.8;
-  padding-bottom: 5px;
-}
-
-.registerForm__input::placeholder {
-  color: var(--color-text);
-  opacity: 0.8;
-}
-
-/* Password Field */
+.registerForm__selectWrapper,
+.registerForm__inputWrapper,
 .registerForm__passwordWrapper {
   position: relative;
   display: flex;
   align-items: center;
-  background: var(--color-accent);
-  border-radius: 10px;
-  height: 50px;
-  padding: 0 10px;
+  gap: 12px;
+  background: #f6e7d3;
+  border-radius: 12px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+  padding: 14px 16px;
+  min-height: 60px;
   box-sizing: border-box;
 }
 
+.registerForm__selectWrapper::after,
+.registerForm__inputWrapper::after,
+.registerForm__passwordWrapper::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 12px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.registerForm__select {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-roboto);
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.7);
+  appearance: none;
+  padding-right: 28px;
+  text-align: center;
+}
+
+.registerForm__select option {
+  background: #f6e7d3;
+  color: var(--color-text);
+}
+
+.registerForm__selectWrapper {
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+
+.registerForm__icon,
 .registerForm__passwordIcon {
   width: 40px;
   height: 40px;
@@ -231,58 +144,61 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin-right: 58px;
-  opacity: 0.5;
 }
 
+.registerForm__passwordIcon {
+  opacity: 0.6;
+}
+
+.registerForm__input,
 .registerForm__passwordInput {
   flex: 1;
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   outline: none;
-  font-family: "Markazi Text", serif;
+  font-family: var(--font-roboto);
   font-weight: 400;
-  font-size: 24px;
-  line-height: normal;
-  color: rgba(0, 0, 0, 0.6);
-  opacity: 0.8;
-  padding-bottom: 5px;
-}
-
-.registerForm__passwordInput::placeholder {
-  font-family: var(--font-roboto);
   font-size: 14px;
-  color: var(--color-text);
-  opacity: 0.8;
+  color: #7c6a58;
+  padding: 4px 0 10px 0;
 }
 
-/* Submit Button */
-.registerForm__submitButton {
-  width: 120px;
-  height: 47px;
-  background: var(--color-accent);
-  border: none;
-  border-radius: 10px;
-  font-family: var(--font-roboto);
-  font-weight: 500;
+.registerForm__passwordInput {
+  font-family: "Markazi Text", serif;
   font-size: 20px;
-  line-height: normal;
-  color: rgba(0, 0, 0, 0.8);
+}
+
+.registerForm__input::placeholder,
+.registerForm__passwordInput::placeholder {
+  color: #7c6a58;
+  opacity: 0.7;
+}
+
+.registerForm__submitButton {
+  width: 140px;
+  height: 48px;
+  background: #f6e7d3;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  font-family: var(--font-roboto);
+  font-weight: 600;
+  font-size: 18px;
+  color: #000000;
   cursor: pointer;
   align-self: center;
-  margin-top: 50px;
+  margin-top: 6px;
   transition: all 0.2s ease;
 }
 
 .registerForm__submitButton:hover {
   transform: translateY(-1px);
-  box-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
 }
 
 .registerForm__submitButton:active {
   transform: translateY(0);
-  box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 .registerForm__submitButton:disabled {

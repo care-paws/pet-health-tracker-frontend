@@ -186,7 +186,7 @@ function PetFormPage() {
                 { id: "hamster", name: "Cobayo", image: petHamster },
                 { id: "bird", name: "Loro", image: petBird },
                 { id: "cat", name: "Gato", image: petCat },
-                { id: "dog", name: "Perro", name: "Perro", image: petDog },
+                { id: "dog", name: "Perro", image: petDog },
                 { id: "rabbit", name: "Conejo", image: petRabbit },
               ].map(pet => (
                 <div

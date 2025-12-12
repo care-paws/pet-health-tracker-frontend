@@ -1,12 +1,12 @@
 .appFooter {
   display: block;
-  padding: 12px 16px;
+  padding: 16px 16px;
   width: 100%;
   max-width: 412px;
-  height: 80px;
+  height: 96px;
   margin-top: auto;
   position: relative; /* flows as a normal block in tall viewports */
-  background: transparent;
+  background: var(--color-secondary);
 }
 
 @media (max-height: 917px) {

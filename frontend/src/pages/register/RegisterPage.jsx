@@ -36,11 +36,17 @@ function RegisterPage() {
     navigate("/");
   };
 
-  const header = <AppHeader showBackButton={true} onBackClick={handleBack} showMenuButton={false} />;
+  const header = (
+    <div className={styles["registerPage__headerWrap"]}>
+      <AppHeader className={styles["registerPage__header"]} showBackButton={true} backPosition="right" centerAlign="start" onBackClick={handleBack}>
+        <img src={logoUrl} alt="Care Paws" width={110} height={70} />
+      </AppHeader>
+    </div>
+  );
   const footer = <AppFooter />;
 
   return (
-    <PageLayout header={header} footer={footer}>
+    <PageLayout className={styles["registerPage"]} header={header} footer={footer}>
       <main className={styles["registerPage__main"]}>
         <div className={styles["registerPage__logoLarge"]}>
           <img src={logoUrl} alt="Care Paws" />
