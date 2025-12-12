@@ -1,5 +1,5 @@
 import logoUrl from "@/assets/logo.svg";
-import { useNavigate } from "react_router_dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./CreatePetPage.module.css";
 
 function CreatePetPage() {
