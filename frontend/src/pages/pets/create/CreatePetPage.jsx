@@ -79,7 +79,7 @@ function CreatePetPage() {
             </ul>
           </div>
           <button className={styles["createPetContainer__button"]} onClick={handleCreateFirst}>
-            Crear el primero
+            Agregar mi primera mascota
           </button>
         </div>
       </main>

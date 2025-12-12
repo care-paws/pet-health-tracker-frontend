@@ -2,7 +2,7 @@ import logoUrl from "@/assets/logo.svg";
 import AppFooter from "@/components/AppFooter";
 import AppHeader from "@/components/AppHeader";
 import PageLayout from "@/layouts/PageLayout";
-import { register } from "@/services/authService";
+import { login, register } from "@/services/authService";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./RegisterPage.module.css";
@@ -21,9 +21,15 @@ function RegisterPage() {
     setLoading(true);
 
     try {
-      const result = await register({ email, password, userType });
-      if (result.success) {
-        navigate("/create-pet");
+      // 1. Registrar usuario
+      const registerResult = await register({ email, password, userType });
+      if (registerResult.success) {
+        // 2. Hacer login automáticamente después del registro
+        const loginResult = await login({ email, password });
+        if (loginResult.success) {
+          // 3. Redirigir a crear mascota
+          navigate("/create-pet");
+        }
       }
     } catch (err) {
       setError(err.message || "Error al registrarse. Por favor, intenta de nuevo.");
@@ -131,7 +137,7 @@ function RegisterPage() {
           </div>
 
           <button type="submit" className={styles["registerForm__submitButton"]} disabled={loading}>
-            {loading ? "Registrando..." : "Confirmar"}
+            {loading ? "Creando cuenta..." : "Confirmar"}
           </button>
         </form>
 

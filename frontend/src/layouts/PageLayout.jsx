@@ -4,7 +4,7 @@ import styles from "./PageLayout.module.css";
 function PageLayout({ className, header, footer, children }) {
   return (
     <div className={`${styles.pageLayout} ${className || ""}`.trim()}>
-      {header}
+      {header && <div className={styles.pageLayout__header}>{header}</div>}
       <div className={styles.pageLayout__content}>{children}</div>
       {footer}
     </div>

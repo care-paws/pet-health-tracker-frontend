@@ -4,6 +4,14 @@
   min-height: 100vh;
 }
 
+/* Sticky Header */
+.pageLayout__header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+
 .pageLayout__content {
   flex: 1;
   display: flex;
