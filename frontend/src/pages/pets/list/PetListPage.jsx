@@ -1,14 +1,4 @@
-import {
-  cameraIcon,
-  femaleIcon,
-  healthButtonIcon,
-  healthIcon,
-  maleIcon,
-  reminderButtonIcon,
-  reminderIcon,
-  weightButtonIcon,
-  weightIcon,
-} from "@/assets/icons/icons";
+import { cameraIcon, femaleIcon, maleIcon, reminderButtonIcon, reminderIcon, weightButtonIcon, weightIcon } from "@/assets/icons/icons";
 import { backgroundPet, dogIllustration } from "@/assets/images/images";
 import logoUrl from "@/assets/logo.svg";
 import AppFooter from "@/components/AppFooter";
@@ -24,6 +14,7 @@ function PetListPage() {
   const [pets, setPets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedPetId, setSelectedPetId] = useState(null);
 
   useEffect(() => {
     fetchPets();
@@ -35,6 +26,10 @@ function PetListPage() {
       setError(null);
       const result = await getPets();
       setPets(result.pets || []);
+      // Select first pet by default
+      if (result.pets && result.pets.length > 0 && !selectedPetId) {
+        setSelectedPetId(result.pets[0].id);
+      }
     } catch (err) {
       console.error("Error fetching pets:", err);
       const errorMessage = err.message || "Error al cargar las mascotas";
@@ -143,7 +138,11 @@ function PetListPage() {
         {!loading &&
           !error &&
           pets.map(pet => (
-            <div key={pet.id} className={styles["petCard"]}>
+            <div
+              key={pet.id}
+              className={`${styles["petCard"]} ${selectedPetId === pet.id ? styles["petCard--selected"] : ""}`}
+              onClick={() => setSelectedPetId(pet.id)}
+            >
               <div className={styles["petCard__imageWrapper"]}>
                 <div className={styles["petCard__background"]} style={{ backgroundImage: `url(${backgroundPet})` }} />
                 <div className={styles["petCard__photoCircle"]}>
@@ -156,7 +155,12 @@ function PetListPage() {
                     }}
                   />
                 </div>
-                <button className={styles["petCard__cameraButton"]}>
+                <button
+                  className={styles["petCard__cameraButton"]}
+                  onClick={e => {
+                    e.stopPropagation(); // Prevent selecting the card
+                  }}
+                >
                   <div className={styles["petCard__cameraCircle"]}>
                     <img src={cameraIcon} alt="Camera" className={styles["petCard__cameraIcon"]} />
                   </div>
@@ -182,22 +186,24 @@ function PetListPage() {
                 {/* Stats Buttons */}
                 <div className={styles["petCard__stats"]}>
                   {/* Notes Button */}
-                  <button onClick={() => navigate("/reminders")} className={styles["petCard__statButton"]}>
+                  <button
+                    onClick={e => {
+                      e.stopPropagation(); // Prevent selecting the card
+                      navigate(`/reminders?petId=${pet.id}`);
+                    }}
+                    className={styles["petCard__statButton"]}
+                  >
                     {/* reminder */}
                     <img src={reminderButtonIcon} alt="Reminder" className={styles["petCard__statIcon"]} />
 
                     <span>{pet.notes ? "1" : "0"}</span>
                   </button>
 
-                  {/* Vaccines Button - TODO: Get from events */}
-                  <button className={styles["petCard__statButton"]}>
-                    {/* health */}
-                    <img src={healthButtonIcon} alt="Health" className={styles["petCard__statIcon"]} />
-                    <span>0</span>
-                  </button>
-
                   {/* Weight Button */}
-                  <button className={styles["petCard__statButton"]}>
+                  <button
+                    className={styles["petCard__statButton"]}
+                    onClick={e => e.stopPropagation()} // Prevent selecting the card
+                  >
                     {/* weight */}
                     <img src={weightButtonIcon} alt="Weight" className={styles["petCard__statIcon"]} />
                     <span>{formatWeight(pet.weight)}</span>
@@ -207,38 +213,30 @@ function PetListPage() {
             </div>
           ))}
 
-        {/* Feature Cards */}
-        <div className={styles["featureCards"]}>
-          <div className={styles["featureCard"]}>
-            <div className={styles["featureCard__content"]}>
-              <h2 className={styles["featureCard__title"]}>Recordatorios</h2>
-              <p className={styles["featureCard__description"]}>Activa recordatorios de vacunas, visitas y alimentación</p>
+        {/* Feature Cards - Only show if there are pets */}
+        {!loading && !error && pets.length > 0 && selectedPetId && (
+          <div className={styles["featureCards"]}>
+            <div className={styles["featureCard"]}>
+              <div className={styles["featureCard__content"]}>
+                <h2 className={styles["featureCard__title"]}>Recordatorios</h2>
+                <p className={styles["featureCard__description"]}>Activa recordatorios de vacunas, visitas y alimentación</p>
+              </div>
+              <div className={styles["featureCard__icon"]}>
+                <img src={reminderIcon} alt="Reminder" width={48} height={48} />
+              </div>
             </div>
-            <div className={styles["featureCard__icon"]}>
-              <img src={reminderIcon} alt="Reminder" width={48} height={48} />
-            </div>
-          </div>
 
-          <div className={styles["featureCard"]}>
-            <div className={styles["featureCard__content"]}>
-              <h2 className={styles["featureCard__title"]}>Historial de salud</h2>
-              <p className={styles["featureCard__description"]}>Registra vacunas y visitas al veterinario de tu mascota</p>
-            </div>
-            <div className={styles["featureCard__icon"]}>
-              <img src={healthIcon} alt="Health" width={48} height={48} />
-            </div>
-          </div>
-
-          <div className={styles["featureCard"]}>
-            <div className={styles["featureCard__content"]}>
-              <h2 className={styles["featureCard__title"]}>Peso de mascota</h2>
-              <p className={styles["featureCard__description"]}>Actualiza el peso e ingresa notas de tu mascota</p>
-            </div>
-            <div className={styles["featureCard__icon"]}>
-              <img src={weightIcon} alt="Weight" width={48} height={48} />
+            <div className={styles["featureCard"]}>
+              <div className={styles["featureCard__content"]}>
+                <h2 className={styles["featureCard__title"]}>Peso de mascota</h2>
+                <p className={styles["featureCard__description"]}>Actualiza el peso e ingresa notas de tu mascota</p>
+              </div>
+              <div className={styles["featureCard__icon"]}>
+                <img src={weightIcon} alt="Weight" width={48} height={48} />
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </main>
     </PageLayout>
   );

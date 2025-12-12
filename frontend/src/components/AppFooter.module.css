@@ -6,7 +6,7 @@
   padding: 16px 16px;
   width: 100%;
   max-width: 412px;
-  height: 96px;
+  height: 80px;
   margin-top: auto;
   position: relative; /* flows as a normal block in tall viewports */
   background: var(--color-secondary);

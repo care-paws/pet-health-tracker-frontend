@@ -11,7 +11,6 @@
 
 .petListPage__headerWrap {
   background: rgba(196, 140, 182, 0.8);
-  padding: 20px 24px;
 }
 
 .petListPage__header {
@@ -113,6 +112,18 @@
   border-radius: 20px;
   overflow: hidden;
   flex-shrink: 0;
+  transition: all 0.2s ease;
+  border: 3px solid transparent;
+}
+
+.petCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.petCard--selected {
+  border-color: #c570d0;
+  box-shadow: 0 4px 16px rgba(197, 112, 208, 0.3);
 }
 
 .petCard__imageWrapper {
