@@ -20,7 +20,7 @@
 
 .petListPage__main {
   flex: 1;
-  padding: 80px 16px 30px;
+  padding: 50px 16px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -325,7 +325,7 @@
 /* Responsive adjustments */
 @media (max-width: 412px) {
   .petListPage__main {
-    padding: 80px 6px 30px;
+    padding: 50px 6px 30px;
   }
 
   .addPetButton {
