@@ -13,6 +13,6 @@
 
 @media (max-height: 917px) {
   .pageLayout__content {
-    padding-bottom: 140px; /* avoid overlap with fixed footer when visible */
+    padding-bottom: 120px; /* avoid overlap with fixed footer when visible */
   }
 }
