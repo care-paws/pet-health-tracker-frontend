@@ -1,4 +1,6 @@
+import { calendarIcon } from "@/assets/icons/icons";
 import { dogIllustration, pawPattern, petBird, petCat, petDog, petHamster, petRabbit, petTurtle } from "@/assets/images/images";
+import logoUrl from "@/assets/logo.svg";
 import AppFooter from "@/components/AppFooter";
 import AppHeader from "@/components/AppHeader";
 import PageLayout from "@/layouts/PageLayout";
@@ -87,57 +89,80 @@ function PetFormPage() {
     navigate("/create-pet");
   };
 
-  const header = <AppHeader showBackButton={true} onBackClick={handleBack} showMenuButton={false} />;
+  const header = (
+    <div className={styles["petFormPage__headerWrap"]}>
+      <AppHeader
+        className={styles["petFormPage__header"]}
+        showBackButton={true}
+        backPosition="right"
+        centerAlign="start"
+        onBackClick={handleBack}
+        showMenuButton={false}
+      >
+        <img src={logoUrl} alt="Care Paws" width={110} height={70} />
+      </AppHeader>
+    </div>
+  );
 
   const footer = <AppFooter />;
 
   return (
-    <PageLayout header={header} footer={footer}>
-      {/* Hero Image with Paw Pattern */}
+    <PageLayout className={styles["petFormPage"]} header={header} footer={footer}>
       <div className={styles["petFormPage__hero"]}>
-        <img src={pawPattern} alt="" className={styles["petFormPage__patternBg"]} />
+        <div className={styles["petFormPage__patternBg"]} style={{ backgroundImage: `url(${pawPattern})` }} />
         <img src={dogIllustration} alt="Dog and Cat" className={styles["petFormPage__heroImage"]} />
       </div>
 
-      {/* Main Content - Scrollable Form */}
       <main className={styles["petFormPage__main"]}>
         <form className={styles["petForm"]} onSubmit={handleSubmit}>
-          {/* Error Message */}
           {error && <div className={styles["petForm__errorMessage"]}>{error}</div>}
 
-          {/* Name Field */}
           <div className={styles["petForm__field"]}>
             <label className={styles["petForm__label"]}>
               Nombre <span className={styles["petForm__required"]}>*</span>
             </label>
-            <input
-              type="text"
-              className={styles["petForm__input"]}
-              placeholder="Ej Max"
-              value={formData.name}
-              onChange={e => setFormData({ ...formData, name: e.target.value })}
-              required
-            />
+            <div className={styles["petForm__inputWrapper"]}>
+              <span className={styles["petForm__icon"]} aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5Z" stroke="#b37ab0" strokeWidth="2" />
+                  <path d="M4 20c0-3.3 3.1-6 7-6s7 2.7 7 6" stroke="#b37ab0" strokeWidth="2" />
+                </svg>
+              </span>
+              <input
+                type="text"
+                className={styles["petForm__input"]}
+                placeholder="Ej Max"
+                value={formData.name}
+                onChange={e => setFormData({ ...formData, name: e.target.value })}
+                required
+              />
+            </div>
           </div>
 
-          {/* Birth Date Field */}
           <div className={styles["petForm__field"]}>
             <label className={styles["petForm__label"]}>
               Fecha de nacimiento <span className={styles["petForm__required"]}>*</span>
             </label>
-            <input
-              type="date"
-              className={styles["petForm__input"]}
-              value={formData.birthDate}
-              onChange={e => setFormData({ ...formData, birthDate: e.target.value })}
-              required
-            />
+            <div className={styles["petForm__inputWrapper"]}>
+              <span className={styles["petForm__icon"]} aria-hidden="true">
+                <img src={calendarIcon} alt="" width={24} height={24} />
+              </span>
+              <input
+                type="date"
+                className={styles["petForm__input"]}
+                value={formData.birthDate}
+                onChange={e => setFormData({ ...formData, birthDate: e.target.value })}
+                required
+              />
+            </div>
           </div>
 
-          {/* Gender Selection */}
           <div className={styles["petForm__field"]}>
+            <div className={styles["petForm__genderLabel"]}>
+              <span>Género</span>
+            </div>
             <div className={styles["petForm__gender"]}>
-              <label className={styles["petForm__genderOption"]}>
+              <label className={`${styles["petForm__genderOption"]} ${formData.gender === "female" ? styles["petForm__genderOption--active"] : ""}`}>
                 <input
                   type="radio"
                   name="gender"
@@ -145,9 +170,10 @@ function PetFormPage() {
                   checked={formData.gender === "female"}
                   onChange={e => setFormData({ ...formData, gender: e.target.value })}
                 />
-                <span>Hembra ♀</span>
+                <span className={styles["petForm__genderDot"]} />
+                <span className={styles["petForm__genderText"]}>Hembra ♀</span>
               </label>
-              <label className={styles["petForm__genderOption"]}>
+              <label className={`${styles["petForm__genderOption"]} ${formData.gender === "male" ? styles["petForm__genderOption--active"] : ""}`}>
                 <input
                   type="radio"
                   name="gender"
@@ -155,27 +181,30 @@ function PetFormPage() {
                   checked={formData.gender === "male"}
                   onChange={e => setFormData({ ...formData, gender: e.target.value })}
                 />
-                <span>Macho ♂</span>
+                <span className={styles["petForm__genderDot"]} />
+                <span className={styles["petForm__genderText"]}>Macho ♂</span>
               </label>
             </div>
           </div>
 
-          {/* Weight Field */}
           <div className={styles["petForm__field"]}>
             <label className={styles["petForm__label"]}>
               El peso de tu mascotas <span className={styles["petForm__required"]}>*</span>
             </label>
-            <input
-              type="text"
-              className={styles["petForm__input"]}
-              placeholder="Eje 3 kilogramos"
-              value={formData.weight}
-              onChange={e => setFormData({ ...formData, weight: e.target.value })}
-              required
-            />
+            <div
+              className={`${styles["petForm__inputWrapper"]} ${styles["petForm__inputWrapper--outlined"]} ${styles["petForm__inputWrapper--weight"]}`}
+            >
+              <input
+                type="text"
+                className={styles["petForm__input"]}
+                placeholder="Eje 3 kilogramos"
+                value={formData.weight}
+                onChange={e => setFormData({ ...formData, weight: e.target.value })}
+                required
+              />
+            </div>
           </div>
 
-          {/* Pet Type Field */}
           <div className={styles["petForm__field"]}>
             <label className={styles["petForm__label"]}>
               Elige un tipo de mascota <span className={styles["petForm__required"]}>*</span>
@@ -203,31 +232,32 @@ function PetFormPage() {
             </div>
           </div>
 
-          {/* Breed Field */}
           <div className={styles["petForm__field"]}>
             <label className={styles["petForm__label"]}>Raza</label>
-            <input
-              type="text"
-              className={styles["petForm__input"]}
-              placeholder="Raza de tu mascota"
-              value={formData.breed}
-              onChange={e => setFormData({ ...formData, breed: e.target.value })}
-            />
+            <div className={styles["petForm__inputWrapper"]}>
+              <input
+                type="text"
+                className={styles["petForm__input"]}
+                placeholder="Raza de tu mascota"
+                value={formData.breed}
+                onChange={e => setFormData({ ...formData, breed: e.target.value })}
+              />
+            </div>
           </div>
 
-          {/* Color Field */}
           <div className={styles["petForm__field"]}>
             <label className={styles["petForm__label"]}>Color</label>
-            <input
-              type="text"
-              className={styles["petForm__input"]}
-              placeholder="Color de tu mascota"
-              value={formData.color}
-              onChange={e => setFormData({ ...formData, color: e.target.value })}
-            />
+            <div className={styles["petForm__inputWrapper"]}>
+              <input
+                type="text"
+                className={styles["petForm__input"]}
+                placeholder="Color de tu mascota"
+                value={formData.color}
+                onChange={e => setFormData({ ...formData, color: e.target.value })}
+              />
+            </div>
           </div>
 
-          {/* Photo Upload Section */}
           <div className={styles["petForm__field"]}>
             <div className={styles["petForm__uploadSection"]}>
               <h3 className={styles["petForm__uploadTitle"]}>
@@ -255,13 +285,12 @@ function PetFormPage() {
                 onChange={e => {
                   const file = e.target.files?.[0];
                   if (file) {
-                    // Validate file size (10MB max)
                     if (file.size > 10 * 1024 * 1024) {
                       setError("La imagen es demasiado grande. Máximo 10MB");
                       return;
                     }
                     setFormData({ ...formData, photo: file });
-                    setError(""); // Clear any previous errors
+                    setError("");
                   }
                 }}
                 required
@@ -269,7 +298,6 @@ function PetFormPage() {
             </div>
           </div>
 
-          {/* Action Buttons */}
           <div className={styles["petForm__actions"]}>
             <button type="button" className={styles["petForm__cancelButton"]} onClick={handleCancel} disabled={loading}>
               Cancelar

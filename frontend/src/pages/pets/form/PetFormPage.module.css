@@ -1,265 +1,209 @@
-/* Pet Form Page Block */
+/* Pet Form Page mobile-first 412x917 */
 .petFormPage {
-  position: relative;
-  width: 412px;
-  height: 917px;
+  width: 100%;
+  max-width: 412px;
+  min-height: 100vh;
   background: var(--color-primary);
-  overflow: hidden;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Header Block */
+.petFormPage__headerWrap {
+  background: var(--color-secondary);
+  padding: 20px 24px;
+}
+
 .petFormPage__header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 412px;
-  height: 80px;
-  background: rgba(196, 140, 182, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  box-sizing: border_box;
-  z-index: 10;
+  color: var(--color-white);
 }
 
-.petFormPage__logo {
-  width: 104px;
-  height: 66px;
-}
-
-.petFormPage__backButton {
-  width: 42px;
-  height: 42px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Hero Section with Pattern */
 .petFormPage__hero {
-  position: absolute;
-  top: 80px;
-  left: 0;
-  width: 412px;
-  height: 280px;
-  overflow: hidden;
+  width: 100%;
+  padding: 8px 24px 0;
+  box-sizing: border-box;
 }
 
 .petFormPage__patternBg {
-  position: absolute;
-  top: 0;
-  left: -1px;
-  width: 413px;
-  height: 280px;
-  object-fit: cover;
+  width: 100%;
+  height: 240px;
+  border-radius: 10px;
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .petFormPage__heroImage {
-  position: absolute;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 275px;
-  height: 275px;
+  display: block;
+  width: 230px;
+  height: 200px;
   object-fit: contain;
+  margin: -70px auto 0 auto;
 }
 
-/* Footer Block */
-.petFormPage__footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 412px;
-  height: 67px;
-  background: rgba(196, 140, 182, 0.8);
-  z-index: 10;
-}
-
-/* Main Content _ Scrollable */
 .petFormPage__main {
-  position: absolute;
-  top: 360px;
-  left: 0;
-  width: 412px;
-  height: 490px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 0 20px 20px 20px;
-  box-sizing: border_box;
+  flex: 1;
+  padding: 14px 24px 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-/* Pet Form */
 .petForm {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
   width: 100%;
 }
 
 .petForm__field {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .petForm__label {
   font-family: var(--font-roboto);
   font-weight: 700;
-  font-size: 20px;
-  line-height: normal;
+  font-size: 18px;
   color: var(--color-text);
+  margin: 0;
 }
 
 .petForm__required {
   color: #fe3939;
 }
 
-.petForm__input,
-.petForm__select {
-  width: 100%;
-  height: 60px;
-  background: var(--color-accent);
+.petForm__inputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f6e7d3;
+  border-radius: 12px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+  padding: 16px 18px;
+  min-height: 64px;
+  box-sizing: border-box;
+}
+
+.petForm__inputWrapper--outlined {
+  border: 1.5px solid #b37ab0;
+  box-shadow: none;
+}
+
+.petForm__inputWrapper--weight {
+  background: #f6e7d3;
+  min-height: 64px;
+}
+
+.petForm__icon {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.petForm__input {
+  flex: 1;
+  background: transparent;
   border: none;
-  border-radius: 10px;
-  box-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  padding: 0 20px;
+  outline: none;
   font-family: var(--font-roboto);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 16px;
-  color: rgba(130, 130, 130, 0.6);
-  box-sizing: border_box;
+  color: rgba(130, 130, 130, 0.9);
 }
 
 .petForm__input::placeholder {
-  color: rgba(130, 130, 130, 0.6);
+  color: rgba(130, 130, 130, 0.7);
 }
 
-.petForm__select {
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23828282' stroke_width='2' stroke_linecap='round' stroke_linejoin='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 20px center;
-  padding-right: 50px;
+.petForm__genderLabel {
+  font-family: var(--font-roboto);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color-text);
 }
 
-/* Gender Selection */
 .petForm__gender {
   display: flex;
-  gap: 46px;
-  padding: 10px 0;
-  justify-content: center;
+  gap: 30px;
+  padding: 4px 0 0;
 }
 
 .petForm__genderOption {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 1.5px solid #d5c4d1;
+  background: #fdf6f2;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.petForm__genderOption input[type="radio"] {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  accent-color: var(--color-secondary);
+.petForm__genderOption input {
+  display: none;
 }
 
-.petForm__genderOption span {
+.petForm__genderDot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #d5c4d1;
+  background: #fff;
+}
+
+.petForm__genderText {
   font-family: var(--font-roboto);
   font-weight: 600;
   font-size: 15px;
-  color: var(--color-text);
+  color: #4a3c41;
 }
 
-/* Upload Section */
-.petForm__uploadSection {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
+.petForm__genderOption--active {
+  border-color: #b37ab0;
+  background: #f2e4ef;
 }
 
-.petForm__uploadTitle {
-  font-family: var(--font-roboto);
-  font-weight: 700;
-  font-size: 28px;
-  line-height: normal;
-  color: var(--color-text);
-  margin: 0;
+.petForm__genderOption--active .petForm__genderDot {
+  border-color: #b37ab0;
+  background: #b37ab0;
 }
 
-.petForm__uploadSubtitle {
-  font-family: var(--font-roboto);
-  font-weight: 300;
-  font-size: 18px;
-  line-height: normal;
-  color: var(--color-text);
-  margin: 0;
+.petForm__genderOption--active .petForm__genderText {
+  color: #3c2f35;
 }
 
-.petForm__uploadArea {
-  width: 100%;
-  min-height: 200px;
-  background: var(--color-accent);
-  border: 3px dashed rgba(197, 112, 208, 0.8);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 20px;
-  box-sizing: border_box;
-  text-align: center;
-  cursor: pointer;
-}
-
-.petForm__uploadArea p {
-  font-family: var(--font-roboto);
-  font-weight: 500;
-  font-size: 18px;
-  color: var(--color-text);
-  margin: 0;
-}
-
-.petForm__uploadInfo {
-  font-size: 14px !important;
-  font-weight: 400 !important;
-  color: rgba(0, 0, 0, 0.6) !important;
-}
-
-/* Pet Types Grid */
 .petTypesGrid {
   display: grid;
-  grid-template-columns: repeat(3, 100px);
-  gap: 28px 40px;
-  justify-content: flex-start;
-  padding: 20px 0;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+  padding: 8px 0;
 }
 
 .petTypeCard {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 9px;
+  gap: 8px;
   cursor: pointer;
   transition: transform 0.2s ease;
 }
 
 .petTypeCard:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
 }
 
 .petTypeCard__image {
-  width: 100px;
-  height: 100px;
+  width: 88px;
+  height: 88px;
   border-radius: 100px;
   border: 2px solid var(--color-secondary);
   background: white;
@@ -270,12 +214,6 @@
   transition: all 0.2s ease;
 }
 
-.petTypeCard__selected .pet_type_card__image {
-  border-color: #c570d0;
-  border-width: 3px;
-  box-shadow: 0 0 10px rgba(197, 112, 208, 0.5);
-}
-
 .petTypeCard__image img {
   width: 100%;
   height: 100%;
@@ -283,105 +221,88 @@
 }
 
 .petTypeCard__label {
-  background: var(--color-accent);
+  background: #f6e7d3;
   border: 2px solid var(--color-secondary);
   border-radius: 10px;
-  padding: 10px;
+  padding: 8px 10px;
   font-family: var(--font-roboto);
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   color: var(--color-text);
   text-align: center;
   min-width: 64px;
   transition: all 0.2s ease;
 }
 
-.petTypeCard__selected .pet_type_card__label {
+.petTypeCardselected .petTypeCard__image {
+  border-width: 3px;
+  box-shadow: 0 0 10px rgba(197, 112, 208, 0.45);
+}
+
+.petTypeCardselected .petTypeCard__label {
   border-color: #c570d0;
   background: var(--color-secondary);
   color: white;
 }
 
-/* Action Buttons */
-.petForm__actions {
+.petForm__uploadSection {
   display: flex;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 30px;
-  padding-bottom: 20px;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
 }
 
-.petForm__cancelButton {
-  width: 80px;
-  height: 35px;
-  background: var(--color-accent);
-  border: 1px solid rgba(197, 112, 208, 0.8);
-  border-radius: 5px;
+.petForm__uploadTitle {
   font-family: var(--font-roboto);
-  font-weight: 600;
-  font-size: 13px;
-  color: rgba(197, 112, 208, 0.8);
-  cursor: pointer;
-  transition: all 0.2s ease;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--color-text);
+  margin: 0;
 }
 
-.petForm__cancelButton:hover {
-  background: rgba(197, 112, 208, 0.1);
-}
-
-.petForm__saveButton {
-  width: 84px;
-  height: 35px;
-  background: var(--color-secondary);
-  border: none;
-  border-radius: 5px;
+.petForm__uploadSubtitle {
   font-family: var(--font-roboto);
-  font-weight: 600;
-  font-size: 11px;
-  color: white;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+}
+
+.petForm__uploadArea {
+  width: 100%;
+  min-height: 200px;
+  background: #f6e7d3;
+  border: 3px dashed rgba(197, 112, 208, 0.8);
+  border-radius: 10px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-}
-
-.petForm__saveButton:hover {
-  background: rgba(196, 140, 182, 1);
-  transform: translateY(-1px);
-}
-
-.petForm__saveButton:active {
-  transform: translateY(0);
-}
-
-.petForm__saveButton:disabled,
-.petForm__cancelButton:disabled {
-  opacity: 0.6;
-  cursor: not_allowed;
-}
-
-/* Error Message */
-.petForm__errorMessage {
-  background-color: #ffebee;
-  color: #c62828;
-  padding: 12px 16px;
-  border-radius: 8px;
-  font-family: var(--font-roboto);
-  font-size: 14px;
-  line-height: 1.5;
-  border: 1px solid #ef9a9a;
+  gap: 10px;
+  padding: 20px;
+  box-sizing: border-box;
   text-align: center;
-  margin-bottom: 10px;
+  cursor: pointer;
 }
 
-/* File Input */
+.petForm__uploadArea p {
+  font-family: var(--font-roboto);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.petForm__uploadInfo {
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
 .petForm__fileInput {
   display: none;
 }
 
-/* Photo Preview */
 .petForm__photoPreview {
   display: flex;
   flex-direction: column;
@@ -402,6 +323,77 @@
   color: var(--color-text);
   opacity: 0.7;
   text-align: center;
-  word-break: break_all;
+  word-break: break-word;
   padding: 0 10px;
+}
+
+.petForm__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 12px;
+  padding-bottom: 20px;
+}
+
+.petForm__cancelButton {
+  width: 90px;
+  height: 36px;
+  background: #f6e7d3;
+  border: 1px solid rgba(197, 112, 208, 0.8);
+  border-radius: 8px;
+  font-family: var(--font-roboto);
+  font-weight: 600;
+  font-size: 13px;
+  color: rgba(197, 112, 208, 0.9);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.petForm__saveButton {
+  width: 100px;
+  height: 36px;
+  background: var(--color-secondary);
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-roboto);
+  font-weight: 700;
+  font-size: 13px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.petForm__cancelButton:hover {
+  background: rgba(197, 112, 208, 0.1);
+}
+
+.petForm__saveButton:hover {
+  background: rgba(196, 140, 182, 1);
+  transform: translateY(-1px);
+}
+
+.petForm__saveButton:active {
+  transform: translateY(0);
+}
+
+.petForm__saveButton:disabled,
+.petForm__cancelButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.petForm__errorMessage {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-family: var(--font-roboto);
+  font-size: 14px;
+  line-height: 1.5;
+  border: 1px solid #ef9a9a;
+  text-align: center;
 }

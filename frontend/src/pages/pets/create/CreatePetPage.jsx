@@ -1,3 +1,5 @@
+import { pawPattern } from "@/assets/images/images";
+import logoUrl from "@/assets/logo.svg";
 import AppFooter from "@/components/AppFooter";
 import AppHeader from "@/components/AppHeader";
 import PageLayout from "@/layouts/PageLayout";
@@ -15,18 +17,28 @@ function CreatePetPage() {
     navigate("/pet-form");
   };
 
-  const header = <AppHeader showBackButton={true} onBackClick={handleBack} showMenuButton={false} />;
+  const header = (
+    <div className={styles["createPetPage__headerWrap"]}>
+      <AppHeader
+        className={styles["createPetPage__header"]}
+        showBackButton={true}
+        backPosition="right"
+        centerAlign="start"
+        onBackClick={handleBack}
+        showMenuButton={false}
+      >
+        <img src={logoUrl} alt="Care Paws" width={110} height={70} />
+      </AppHeader>
+    </div>
+  );
 
   const footer = <AppFooter />;
 
   return (
-    <PageLayout header={header} footer={footer}>
-      {/* Main Content */}
+    <PageLayout className={styles["createPetPage"]} header={header} footer={footer}>
       <main className={styles["createPetPage__main"]}>
-        {/* Paw Pattern Image */}
-        <div className={styles["createPetPage__pattern"]}>{/* Pattern will be a background image in CSS */}</div>
+        <div className={styles["createPetPage__pattern"]} style={{ backgroundImage: `url(${pawPattern})` }} />
 
-        {/* Content Container */}
         <div className={styles["createPetContainer"]}>
           <div className={styles["createPetContainer__text"]}>
             <p>Añade tu primer mascota haciendo clic en el botón + en la parte superior o el botón de abajo.</p>

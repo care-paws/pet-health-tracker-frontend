@@ -1,176 +1,86 @@
-/* Create Pet Page Block */
+/* Create Pet Page mobile-first 412x917 */
 .createPetPage {
-  position: relative;
-  width: 412px;
-  height: 917px;
-  background: var(--color-primary);
-  overflow: hidden;
-  margin: 0 auto;
-}
-
-/* Header Block */
-.createPetPage__header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 412px;
-  height: 80px;
-  background: rgba(196, 140, 182, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  box-sizing: border_box;
-}
-
-.createPetPage__logo {
-  width: 104px;
-  height: 66px;
-}
-
-.createPetPage__backButton {
-  width: 42px;
-  height: 42px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Footer Block */
-.createPetPage__footer {
-  position: absolute;
-  top: 837px;
-  left: 0;
-  width: 412px;
-  height: 80px;
-  background: rgba(196, 140, 182, 0.8);
-}
-
-/* Main Content Block */
-.createPetPage__main {
-  position: absolute;
-  top: 80px;
-  left: 0;
-  width: 412px;
-  height: 757px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Paw Pattern */
-.createPetPage__pattern {
-  position: absolute;
-  top: 20px;
-  left: 0;
-  width: 412px;
-  height: 307px;
-  background-image: 
-    radial_gradient(circle at 30% 20%, #C48CB6 8px, transparent 8px),
-    radial_gradient(circle at 25% 25%, #C48CB6 6px, transparent 6px),
-    radial_gradient(circle at 35% 25%, #C48CB6 6px, transparent 6px),
-    radial_gradient(circle at 40% 30%, #C48CB6 6px, transparent 6px),
-    radial_gradient(circle at 20% 30%, #C48CB6 6px, transparent 6px),
-    radial_gradient(ellipse 25px 30px at 30% 32%, #C48CB6 100%, transparent),
-    
-    radial_gradient(circle at 70% 15%, #00CED1 8px, transparent 8px),
-    radial_gradient(circle at 65% 20%, #00CED1 6px, transparent 6px),
-    radial_gradient(circle at 75% 20%, #00CED1 6px, transparent 6px),
-    radial_gradient(circle at 80% 25%, #00CED1 6px, transparent 6px),
-    radial_gradient(circle at 60% 25%, #00CED1 6px, transparent 6px),
-    radial_gradient(ellipse 25px 30px at 70% 27%, #00CED1 100%, transparent),
-    
-    radial_gradient(circle at 15% 60%, #00CED1 8px, transparent 8px),
-    radial_gradient(circle at 10% 65%, #00CED1 6px, transparent 6px),
-    radial_gradient(circle at 20% 65%, #00CED1 6px, transparent 6px),
-    radial_gradient(circle at 25% 70%, #00CED1 6px, transparent 6px),
-    radial_gradient(circle at 5% 70%, #00CED1 6px, transparent 6px),
-    radial_gradient(ellipse 25px 30px at 15% 72%, #00CED1 100%, transparent),
-    
-    radial_gradient(circle at 85% 60%, #C48CB6 8px, transparent 8px),
-    radial_gradient(circle at 80% 65%, #C48CB6 6px, transparent 6px),
-    radial_gradient(circle at 90% 65%, #C48CB6 6px, transparent 6px),
-    radial_gradient(circle at 95% 70%, #C48CB6 6px, transparent 6px),
-    radial_gradient(circle at 75% 70%, #C48CB6 6px, transparent 6px),
-    radial_gradient(ellipse 25px 30px at 85% 72%, #C48CB6 100%, transparent),
-    
-    radial_gradient(circle at 50% 40%, #00CED1 8px, transparent 8px),
-    radial_gradient(circle at 45% 45%, #00CED1 6px, transparent 6px),
-    radial_gradient(circle at 55% 45%, #00CED1 6px, transparent 6px),
-    radial_gradient(circle at 60% 50%, #00CED1 6px, transparent 6px),
-    radial_gradient(circle at 40% 50%, #00CED1 6px, transparent 6px),
-    radial_gradient(ellipse 25px 30px at 50% 52%, #00CED1 100%, transparent),
-    
-    radial_gradient(circle at 60% 80%, #C48CB6 8px, transparent 8px),
-    radial_gradient(circle at 55% 85%, #C48CB6 6px, transparent 6px),
-    radial_gradient(circle at 65% 85%, #C48CB6 6px, transparent 6px),
-    radial_gradient(circle at 70% 90%, #C48CB6 6px, transparent 6px),
-    radial_gradient(circle at 50% 90%, #C48CB6 6px, transparent 6px),
-    radial_gradient(ellipse 25px 30px at 60% 92%, #C48CB6 100%, transparent);
-  background_size: 100% 100%;
-  background-repeat: no-repeat;
-  opacity: 0.6;
-}
-
-/* Content Container */
-.createPetContainer {
-  position: absolute;
-  top: 432px;
-  left: 84px;
-  width: 244px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 27px;
-}
-
-.createPetContainer__text {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 16px 10px 16px;
-  height: 90px;
   width: 100%;
-  box-sizing: border_box;
+  max-width: 412px;
+  min-height: 100vh;
+  background: var(--color-primary);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.createPetPage__headerWrap {
+  background: var(--color-secondary);
+  padding: 20px 24px;
+}
+
+.createPetPage__header {
+  color: var(--color-white);
+}
+
+.createPetPage__main {
+  flex: 1;
+  padding: 12px 24px 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.createPetPage__pattern {
+  width: 100%;
+  height: 320px;
+  border-radius: 8px;
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center;
+  overflow: hidden;
+}
+
+.createPetContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  max-width: 260px;
 }
 
 .createPetContainer__text p {
   font-family: var(--font-roboto);
   font-weight: 500;
   font-size: 16px;
-  line-height: 19px;
-  color: rgba(0, 0, 0, 0.8);
-  text-align: center;
+  line-height: 22px;
+  color: rgba(0, 0, 0, 0.85);
   margin: 0;
-  width: 213px;
 }
 
 .createPetContainer__button {
-  width: 152px;
-  height: 47px;
-  background: var(--color-accent);
+  width: 170px;
+  height: 48px;
+  background: #f6e7d3;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
   font-family: var(--font-roboto);
-  font-weight: 500;
-  font-size: 18px;
-  line-height: normal;
-  color: rgba(0, 0, 0, 0.8);
+  font-weight: 600;
+  font-size: 16px;
+  color: #000000;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .createPetContainer__button:hover {
   transform: translateY(-1px);
-  box-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
 }
 
 .createPetContainer__button:active {
   transform: translateY(0);
-  box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
 }
 
+.createPetContainer__button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
