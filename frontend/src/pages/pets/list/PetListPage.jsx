@@ -182,7 +182,7 @@ function PetListPage() {
                 {/* Stats Buttons */}
                 <div className={styles["petCard__stats"]}>
                   {/* Notes Button */}
-                  <button className={styles["petCard__statButton"]}>
+                  <button onClick={() => navigate("/reminders")} className={styles["petCard__statButton"]}>
                     {/* reminder */}
                     <img src={reminderButtonIcon} alt="Reminder" className={styles["petCard__statIcon"]} />
 

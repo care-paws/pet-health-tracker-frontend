@@ -3,13 +3,44 @@ import logoUrl from "@/assets/logo.svg";
 import AppFooter from "@/components/AppFooter";
 import AppHeader from "@/components/AppHeader";
 import PageLayout from "@/layouts/PageLayout";
-import { useState } from "react";
+import { getCurrentUser, logout } from "@/services/authService";
+import { getPets } from "@/services/petService";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./LandingPage.module.css";
 
 function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [hasPets, setHasPets] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkAuthAndPets = async () => {
+      try {
+        const authResult = await getCurrentUser();
+        if (authResult.success && authResult.user) {
+          setIsLoggedIn(true);
+          // Check if user has pets
+          try {
+            const petsResult = await getPets();
+            setHasPets(petsResult.pets && petsResult.pets.length > 0);
+          } catch (err) {
+            console.error("Error checking pets:", err);
+            setHasPets(false);
+          }
+        } else {
+          setIsLoggedIn(false);
+          setHasPets(false);
+        }
+      } catch (err) {
+        console.error("Error checking auth:", err);
+        setIsLoggedIn(false);
+        setHasPets(false);
+      }
+    };
+    checkAuthAndPets();
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -27,6 +58,28 @@ function LandingPage() {
   const handleRegisterClick = () => {
     setIsMenuOpen(false);
     navigate("/register");
+  };
+
+  const handleViewPetsClick = () => {
+    setIsMenuOpen(false);
+    navigate("/pets");
+  };
+
+  const handleAddPetClick = () => {
+    setIsMenuOpen(false);
+    navigate("/pet-form");
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      setIsLoggedIn(false);
+      setHasPets(false);
+      setIsMenuOpen(false);
+      navigate("/");
+    } catch (err) {
+      console.error("Error logging out:", err);
+    }
   };
 
   const header = (
@@ -60,12 +113,31 @@ function LandingPage() {
             </svg>
           </button>
           <div className={styles["sideMenu__buttons"]}>
-            <button className={styles["sideMenu__button"]} onClick={handleLoginClick}>
-              Iniciar sesión
-            </button>
-            <button className={styles["sideMenu__button"]} onClick={handleRegisterClick}>
-              Registrarme
-            </button>
+            {isLoggedIn ? (
+              <>
+                {hasPets ? (
+                  <button className={styles["sideMenu__button"]} onClick={handleViewPetsClick}>
+                    Ver mascotas
+                  </button>
+                ) : (
+                  <button className={styles["sideMenu__button"]} onClick={handleAddPetClick}>
+                    Agregar mascota
+                  </button>
+                )}
+                <button className={styles["sideMenu__button"]} onClick={handleLogout}>
+                  Cerrar sesión
+                </button>
+              </>
+            ) : (
+              <>
+                <button className={styles["sideMenu__button"]} onClick={handleLoginClick}>
+                  Iniciar sesión
+                </button>
+                <button className={styles["sideMenu__button"]} onClick={handleRegisterClick}>
+                  Registrarme
+                </button>
+              </>
+            )}
           </div>
         </div>
       </nav>
