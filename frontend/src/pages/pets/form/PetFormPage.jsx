@@ -4,8 +4,8 @@ import logoUrl from "@/assets/logo.svg";
 import AppFooter from "@/components/AppFooter";
 import AppHeader from "@/components/AppHeader";
 import PageLayout from "@/layouts/PageLayout";
-import { createPet, mapPetTypeToSpecies } from "@/services/petService";
-import { useState } from "react";
+import { createPet, getPets, mapPetTypeToSpecies } from "@/services/petService";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./PetFormPage.module.css";
 
@@ -22,9 +22,23 @@ function PetFormPage() {
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [hasPets, setHasPets] = useState(false);
+
+  useEffect(() => {
+    const checkExistingPets = async () => {
+      try {
+        const result = await getPets();
+        setHasPets(result.pets && result.pets.length > 0);
+      } catch (err) {
+        console.error("Error checking pets:", err);
+        setHasPets(false);
+      }
+    };
+    checkExistingPets();
+  }, []);
 
   const handleBack = () => {
-    navigate("/create-pet");
+    navigate(hasPets ? "/pets" : "/create-pet");
   };
 
   const handleSubmit = async e => {
@@ -80,9 +94,8 @@ function PetFormPage() {
 
       if (result.success) {
         console.log("Pet created successfully:", result.pet);
-        // Navigate to a success page or pets list
-        // For now, navigate back to create-pet page
-        navigate("/create-pet");
+        // Navigate to pets list
+        navigate("/pets");
       }
     } catch (err) {
       setError(err.message || "Error al crear mascota. Por favor, intenta de nuevo.");
@@ -93,7 +106,7 @@ function PetFormPage() {
   };
 
   const handleCancel = () => {
-    navigate("/create-pet");
+    navigate(hasPets ? "/pets" : "/create-pet");
   };
 
   const header = (
