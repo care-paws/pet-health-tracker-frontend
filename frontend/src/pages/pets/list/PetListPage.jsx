@@ -3,8 +3,12 @@ import { backgroundPet, dogIllustration } from "@/assets/images/images";
 import logoUrl from "@/assets/logo.svg";
 import AppFooter from "@/components/AppFooter";
 import AppHeader from "@/components/AppHeader";
+import ConfirmModal from "@/components/ConfirmModal";
+import ErrorModal from "@/components/ErrorModal";
 import PageLayout from "@/layouts/PageLayout";
-import { calculateAge, getPets } from "@/services/petService";
+import { getPetEvents } from "@/services/eventService";
+import { calculateAge, deletePet, getPets } from "@/services/petService";
+import { getEventReminders } from "@/services/reminderService";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./PetListPage.module.css";
@@ -15,6 +19,9 @@ function PetListPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedPetId, setSelectedPetId] = useState(null);
+  const [confirmModal, setConfirmModal] = useState({ isOpen: false, petId: null, petName: "" });
+  const [errorModal, setErrorModal] = useState({ isOpen: false, message: "" });
+  const [reminderCounts, setReminderCounts] = useState({});
 
   useEffect(() => {
     fetchPets();
@@ -25,11 +32,16 @@ function PetListPage() {
       setLoading(true);
       setError(null);
       const result = await getPets();
-      setPets(result.pets || []);
+      const fetchedPets = result.pets || [];
+      setPets(fetchedPets);
+
       // Select first pet by default
-      if (result.pets && result.pets.length > 0 && !selectedPetId) {
-        setSelectedPetId(result.pets[0].id);
+      if (fetchedPets.length > 0 && !selectedPetId) {
+        setSelectedPetId(fetchedPets[0].id);
       }
+
+      // Fetch reminder counts for each pet
+      await fetchReminderCounts(fetchedPets);
     } catch (err) {
       console.error("Error fetching pets:", err);
       const errorMessage = err.message || "Error al cargar las mascotas";
@@ -42,6 +54,33 @@ function PetListPage() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const fetchReminderCounts = async petsToCount => {
+    const counts = {};
+
+    for (const pet of petsToCount) {
+      try {
+        // Get all events for this pet
+        const eventsResult = await getPetEvents(pet.id);
+        const events = eventsResult.events || [];
+
+        // Count all reminders across all events
+        let totalReminders = 0;
+        for (const event of events) {
+          const remindersResult = await getEventReminders(event.id);
+          const reminders = remindersResult.reminders || [];
+          totalReminders += reminders.length;
+        }
+
+        counts[pet.id] = totalReminders;
+      } catch (err) {
+        console.error(`Error fetching reminders for pet ${pet.id}:`, err);
+        counts[pet.id] = 0;
+      }
+    }
+
+    setReminderCounts(counts);
   };
 
   const handleAddPet = () => {
@@ -76,6 +115,60 @@ function PetListPage() {
     return weight ? `${weight} kg` : "0 kg";
   };
 
+  const handleDeletePet = (petId, petName) => {
+    setConfirmModal({ isOpen: true, petId, petName });
+  };
+
+  const handleConfirmDelete = async () => {
+    const { petId } = confirmModal;
+    setConfirmModal({ isOpen: false, petId: null, petName: "" });
+
+    if (!petId) return;
+
+    try {
+      // Optimistic UI update
+      setPets(prevPets => prevPets.filter(p => p.id !== petId));
+      setReminderCounts(prevCounts => {
+        const newCounts = { ...prevCounts };
+        delete newCounts[petId];
+        return newCounts;
+      });
+
+      // If the deleted pet was selected, select another one
+      if (selectedPetId === petId) {
+        const remainingPets = pets.filter(p => p.id !== petId);
+        if (remainingPets.length > 0) {
+          setSelectedPetId(remainingPets[0].id);
+        } else {
+          setSelectedPetId(null);
+        }
+      }
+
+      const result = await deletePet(petId);
+      if (!result.success) {
+        throw new Error(result.message || "Error al eliminar mascota");
+      }
+      // Reload pets to ensure consistency
+      await fetchPets();
+    } catch (err) {
+      console.error("Error deleting pet:", err);
+      setErrorModal({
+        isOpen: true,
+        message: err.message || "Error al eliminar mascota",
+      });
+      // Revert optimistic update if deletion fails
+      await fetchPets();
+    }
+  };
+
+  const handleCancelDelete = () => {
+    setConfirmModal({ isOpen: false, petId: null, petName: "" });
+  };
+
+  const handleCloseErrorModal = () => {
+    setErrorModal({ isOpen: false, message: "" });
+  };
+
   const header = (
     <div className={styles["petListPage__headerWrap"]}>
       <AppHeader className={styles["petListPage__header"]} showBackButton={false} showMenuButton={true} centerAlign="start">
@@ -97,6 +190,18 @@ function PetListPage() {
 
   return (
     <PageLayout className={styles["petListPage"]} header={header} footer={footer}>
+      <ConfirmModal
+        isOpen={confirmModal.isOpen}
+        title="Eliminar mascota"
+        message={`¿Estás seguro de que deseas eliminar a ${confirmModal.petName}? Esta acción no se puede deshacer y se eliminarán todos sus recordatorios y eventos asociados.`}
+        onConfirm={handleConfirmDelete}
+        onCancel={handleCancelDelete}
+        confirmText="Eliminar"
+        cancelText="Cancelar"
+      />
+
+      <ErrorModal isOpen={errorModal.isOpen} message={errorModal.message} onClose={handleCloseErrorModal} />
+
       <main className={styles["petListPage__main"]}>
         {/* Add Pet Button */}
         <button className={styles["addPetButton"]} onClick={handleAddPet}>
@@ -143,6 +248,16 @@ function PetListPage() {
               className={`${styles["petCard"]} ${selectedPetId === pet.id ? styles["petCard--selected"] : ""}`}
               onClick={() => setSelectedPetId(pet.id)}
             >
+              <button
+                className={styles["petCard__deleteButton"]}
+                onClick={e => {
+                  e.stopPropagation();
+                  handleDeletePet(pet.id, pet.name);
+                }}
+                aria-label="Eliminar mascota"
+              >
+                ×
+              </button>
               <div className={styles["petCard__imageWrapper"]}>
                 <div className={styles["petCard__background"]} style={{ backgroundImage: `url(${backgroundPet})` }} />
                 <div className={styles["petCard__photoCircle"]}>
@@ -196,7 +311,7 @@ function PetListPage() {
                     {/* reminder */}
                     <img src={reminderButtonIcon} alt="Reminder" className={styles["petCard__statIcon"]} />
 
-                    <span>{pet.notes ? "1" : "0"}</span>
+                    <span>{reminderCounts[pet.id] || 0}</span>
                   </button>
 
                   {/* Weight Button */}

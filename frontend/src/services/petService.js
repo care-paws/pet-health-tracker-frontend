@@ -190,6 +190,41 @@ export const calculateAge = birthDate => {
 };
 
 /**
+ * Delete a pet by ID
+ * @param {string} petId - Pet ID to delete
+ * @returns {Promise<Object>} Deletion result
+ */
+export const deletePet = async petId => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/pets/${petId}`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+      },
+      credentials: "include",
+    });
+
+    if (response.ok) {
+      return { success: true, message: "Mascota eliminada correctamente" };
+    }
+
+    if (response.status === 401) {
+      throw new Error("Debes iniciar sesión");
+    }
+
+    if (response.status === 404) {
+      throw new Error("Mascota no encontrada");
+    }
+
+    const errorData = await response.json().catch(() => ({ message: "Error al eliminar mascota" }));
+    throw new Error(errorData.message || "Error al eliminar mascota");
+  } catch (error) {
+    console.error("Delete pet error:", error);
+    throw error;
+  }
+};
+
+/**
  * Map pet type ID to species name
  * @param {string} petTypeId - Pet type ID (e.g., "dog", "cat")
  * @returns {string} Species name (e.g., "Perro", "Gato")
